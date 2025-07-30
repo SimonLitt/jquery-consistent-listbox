@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery consistent listbox - Quick start</title>
+
+		<!-- need to include jQuery -->
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js" type="text/javascript" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js" type="text/javascript" integrity="sha256-AlTido85uXPlSyyaZNsjJXeCs07eSv3r43kyCVc8ChI=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<link href="https://code.jquery.com/ui/1.14.1/themes/cupertino/jquery-ui.css" type="text/css" rel="stylesheet" media="screen"  integrity="sha256-1Lhp59o6Lo17agNDv7pxRJSu6j1iExUKwHp/P2I19hQ=" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+		<!-- include the plugin and default stylesheet -->
+		<script src="../upload/listbox.min.js" type="text/javascript"></script>
+		<link href="../upload/listbox.min.css" type="text/css" rel="stylesheet"/>
+
+		<style>
+			.sl-listbox {max-width: 12rem;}
+			.float-l {float: left;}
+			.clear {clear: both}
+			.ml-1 {margin-left: 1rem;}
+		</style>
+	</head>
+<body>
+	<form id="lb-form">
+		<div class="float-l">
+			Singleselect listbox:
+			<div id="user_listbox" class="sl-listbox sl-h-20"></div>
+		</div>
+		<div class="float-l ml-1">
+			Multiselect listbox:
+			<div id="user_multilistbox" class="sl-listbox sl-h-20"></div>
+		</div>
+		<br class="clear"><br>
+	</form>
+
+	<button id="btn-selected" type="button">Selected</button>&nbsp;
+	<button id="btn-data" type="button">Form data</button>
+
+	<div id="output"></div>
+	<script><!--
+
+	$( function() {
+		$('#user_listbox').listbox({
+			items: [
+				{val: '1', text: 'Item 1'},
+				{val: '2', text: 'Item 2'},
+				{val: '3', text: 'Item 3', checked: true},
+				{val: '4', text: 'Item 4'},
+				{val: '5', text: 'Item 5'},
+			],
+			onChange: function(e, val) {
+				console.log(val.old, val.cur);
+			}
+		});
+
+		$('#user_multilistbox').listbox({
+			multiSelect: true,
+			name: 'selected_name', // The HTML `name` attribute identifier. Mandatory when there is more than one listbox on one page.
+			items: [
+				{val: '1', text: 'Item 1', checked: true},
+				{val: '2', text: 'Item 2', checked: true},
+				{val: '3', text: 'Item 3'},
+				{val: '4', text: 'Item 4', checked: true},
+				{val: '5', text: 'Item 5'},
+			],
+			onChange: function(e, val) {
+				console.log(val.old, val.cur);
+			}
+		});
+
+		$('#btn-selected').on("click", function(e) {
+			e.preventDefault();
+			if ($('#user_listbox').listbox('hasSelected')) {
+				let singleselect_val = $('#user_listbox').listbox('val');
+
+				$('#output').append('<p>Singleselect listbox value is `' + singleselect_val + '` with text: `' + $('#user_listbox').listbox('getText') +  '`</p>');
+			} else {
+				$('#output').append('<p>Singleselect listbox is not selected</p>');
+			}
+
+			if ($('#user_multilistbox').listbox('hasSelected')) {
+				let multiselect_vals = $('#user_multilistbox').listbox('vals');
+
+				let text = '';
+				for (const val of multiselect_vals) {
+					if (text) {
+						text += ', ';
+					}
+					text += '`' + val + '` (text: `' + $('#user_multilistbox').listbox('getItemText', val) + '`)';
+				}
+				$('#output').append('<p>Multiselect listbox values: ' + text + '</p>');
+			} else {
+				$('#output').append('<p>Multiselect listbox is not selected</p>');
+			}
+		});
+
+		$('#btn-data').on("click", function(e) {
+			e.preventDefault();
+			$('#output').append('<p>The form query string: `' + $('#lb-form').serialize() + '`</p>');
+		});
+	});
+	//--></script>
+</body>
+</html>
