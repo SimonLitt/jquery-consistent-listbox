@@ -85,8 +85,12 @@ For the multiselect listbox, you need to specify the `multiSelect` option. If th
 `sortOrderStep`	Type:number	`sort_order` data key increment step for auto sorting. Default 10.
 
 ### Methods
-For more detailed usage information, please refer to the docs and examples directories.
+See the plugin [wiki](https://github.com/SimonLitt/jquery-consistent-listbox/wiki/Plugin-methods).
+
+For more detailed information, please refer to the docs directory.
 
 Additionally standard jQuery Widget Factory methods are available, such as `option`.
 ### Events
 onChange( event, val )
+# Example
+Please refer to the examples directory.
