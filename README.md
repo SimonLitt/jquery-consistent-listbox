@@ -14,8 +14,8 @@ Link jQuery and jQuery UI and the listbox:
 		<link href="https://code.jquery.com/ui/1.14.1/themes/cupertino/jquery-ui.css" type="text/css" rel="stylesheet" media="screen"  integrity="sha256-1Lhp59o6Lo17agNDv7pxRJSu6j1iExUKwHp/P2I19hQ=" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
 		<!-- include the plugin and default stylesheet -->
-		<script src="javascript/simonlitt/listbox.js" type="text/javascript"></script>
-		<link href="javascript/simonlitt/listbox.css" type="text/css" rel="stylesheet"/>
+		<script src="javascript/simonlitt/listbox.min.js" type="text/javascript"></script>
+		<link href="javascript/simonlitt/listbox.min.css" type="text/css" rel="stylesheet"/>
 ```
 
 Place the listbox container:
