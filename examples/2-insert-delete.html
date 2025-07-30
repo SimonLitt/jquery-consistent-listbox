@@ -14,6 +14,7 @@
 		<link href="../upload/listbox.min.css" type="text/css" rel="stylesheet"/>
 
 		<link href="example.css" type="text/css" rel="stylesheet"/>
+
 		<style>
 		</style>
 	</head>
@@ -23,18 +24,17 @@
 			Singleselect listbox:
 			<div id="user_listbox" class="sl-listbox sl-h-20"></div>
 		</div>
-		<div class="float-l ml-1">
-			Multiselect listbox:
-			<div id="user_multilistbox" class="sl-listbox sl-h-20"></div>
-		</div>
 		<br class="clear"><br>
 	</form>
 
-	<button id="btn-selected" type="button">Selected</button>&nbsp;
-	<button id="btn-data" type="button">Form data</button>
+	<button id="btn-add" type="button">Add</button>&nbsp;
+	<button id="btn-insert" type="button">Insert</button>&nbsp;
+	<button id="btn-delete" type="button">Delete</button>
 
 	<div id="output"></div>
 	<script><!--
+
+	var max_value = 5;
 
 	$( function() {
 		$('#user_listbox').listbox({
@@ -50,51 +50,27 @@
 			}
 		});
 
-		$('#user_multilistbox').listbox({
-			multiSelect: true,
-			name: 'selected_name', // The HTML `name` attribute identifier. Mandatory when there is more than one listbox on one page.
-			items: [
-				{val: '1', text: 'Item 1', checked: true},
-				{val: '2', text: 'Item 2', checked: true},
-				{val: '3', text: 'Item 3'},
-				{val: '4', text: 'Item 4', checked: true},
-				{val: '5', text: 'Item 5'},
-			],
-			onChange: function(e, val) {
-				console.log(val.old, val.cur);
-			}
-		});
-
-		$('#btn-selected').on("click", function(e) {
+		$('#btn-add').on("click", function(e) {
 			e.preventDefault();
-			if ($('#user_listbox').listbox('hasSelected')) {
-				let singleselect_val = $('#user_listbox').listbox('val');
-
-				$('#output').append('<p>Singleselect listbox value is `' + singleselect_val + '` with text: `' + $('#user_listbox').listbox('getText') +  '`</p>');
-			} else {
-				$('#output').append('<p>Singleselect listbox is not selected</p>');
-			}
-
-			if ($('#user_multilistbox').listbox('hasSelected')) {
-				let multiselect_vals = $('#user_multilistbox').listbox('vals');
-
-				let text = '';
-				for (const val of multiselect_vals) {
-					if (text) {
-						text += ', ';
-					}
-					text += '`' + val + '` (text: `' + $('#user_multilistbox').listbox('getItemText', val) + '`)';
-				}
-				$('#output').append('<p>Multiselect listbox values: ' + text + '</p>');
-			} else {
-				$('#output').append('<p>Multiselect listbox is not selected</p>');
-			}
+			max_value++;
+			$('#user_listbox').listbox('add', {val: max_value, text: 'Item ' + max_value});
 		});
 
-		$('#btn-data').on("click", function(e) {
+		$('#btn-insert').on("click", function(e) {
 			e.preventDefault();
-			$('#output').append('<p>The form query string: `' + $('#lb-form').serialize() + '`</p>');
+			max_value++;
+			let curValue = $('#user_listbox').listbox('val');
+			let curIdx = $('#user_listbox').listbox('index');
+			$('#user_listbox').listbox('insert', curIdx + 1, {val: max_value, text: 'Item ' + max_value});
 		});
+
+		$('#btn-delete').on("click", function(e) {
+			e.preventDefault();
+			let value = $('#user_listbox').listbox('val');
+			$('#user_listbox').listbox('delete', value);
+		});
+
+
 	});
 	//--></script>
 </body>

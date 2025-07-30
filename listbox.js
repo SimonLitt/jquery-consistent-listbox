@@ -85,6 +85,26 @@
 			return '<label class="ui-menu-item ui-menu-item-wrapper ui-corner-all' + (is_checked ? ' ui-state-active' : '') + (html_class ? (' ' + html_class) : '') + '" title="' + text + '"><input type="' + (this.options.multiSelect ? 'checkbox' : 'radio') + '"' + (this.options.name ? (' name="' + this.options.name + '"') : 'lb_name')+ ' class="form-check-input" value="' + value + '"' + (is_checked ? ' checked="checked"' : '') + '/><span class="item-text">' + text + '</span>' + ((this.options.sortable && !this.options.autoSort) ? '<i class="fas fa-sort drag-icon"></i>' : '') + '</label>';
 		},
 
+		/**
+		 * Gets the specified item index.
+		 *
+		 * @returns {boolean} The item index.
+		 */
+		index:  function() {
+			return this.getItemIndex(this.val());
+		},
+
+		/**
+		 * Gets an item index by value.
+		 *
+		 * @param {string} value - Item value.
+		 * @returns {number} The item index.
+		 */
+		getItemIndex:  function(value) {
+			let selected_input = this.element.find('input[value=\'' + value + '\']');
+			return selected_input.closest('.ui-menu-item').index();
+		},
+
 		_insert: function(index, item, e) {
 			let value = item.hasOwnProperty('val') ? String(item.val) : '';
 			if (this._item_data.has(value)) {
