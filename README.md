@@ -1,10 +1,10 @@
 # jquery-consistent-listbox
 jQuery singleselect and multiselect listbox plugin. The plugin designed to display consistently and correctly on both mobile devices and desktops. The plugin can be used inside of html forms.
 
-<img width="224" height="356" alt="mlb" src="https://github.com/user-attachments/assets/ae975266-4364-42a6-a452-56ff14627335" />
 <img width="228" height="356" alt="slb" src="https://github.com/user-attachments/assets/d584878e-797b-4ff0-bef4-dc36f0698532" />
+<img width="224" height="356" alt="mlb" src="https://github.com/user-attachments/assets/ae975266-4364-42a6-a452-56ff14627335" />
 
-### Usage
+# Usage
 Link jQuery and jQuery UI and the listbox:
 ``` HTML
 
@@ -24,10 +24,10 @@ Place the listbox container:
 
 <div id="user_listbox" class="sl-listbox sl-h-20"></div>
 ```
+### Initialization
 Create listbox object:
 ``` HTML
 <script><!--
-
 	$( function() {
 		$('#user_listbox').listbox({
 			items: [
@@ -49,7 +49,6 @@ For the multiselect listbox, you need to specify the `multiSelect` option. If th
 ``` HTML
 <div id="user_multilistbox" class="sl-listbox sl-h-20"></div>
 <script><!--
-
 	$( function() {
 		$('#user_multilistbox').listbox({
 			multiSelect: true,
@@ -68,6 +67,26 @@ For the multiselect listbox, you need to specify the `multiSelect` option. If th
 	});
 	//--></script>
 ```
-Standard jQuery Widget Factory methods are available, such as `option`.
 
-For more detailed usage information, please refer to the docs, examples directories.
+### Options
+
+`multiSelect`	Type:boolean	This is a multiselect listbox, otherwise it is a singleselect listbox. Default false.
+
+`name`	Type:sting	The HTML `name` attribute identifier. Mandatory when there is more than one listbox on one page. Default `lb_name`.
+
+`quiet`	Type:boolean	Disable call `onChange`. Default false.
+
+`autoSort`	Type:boolean	Enable auto sorting. Default false.
+
+`sortOrder`	Type:string	Sort data key. Default null.
+
+`sortable`	Type:boolean	Allowed to sort manually by dragging items. Default false.
+
+`sortOrderStep`	Type:number	`sort_order` data key increment step for auto sorting. Default 10.
+
+### Methods
+For more detailed usage information, please refer to the docs and examples directories.
+
+Additionally standard jQuery Widget Factory methods are available, such as `option`.
+### Events
+onChange( event, val )
