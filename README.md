@@ -87,7 +87,7 @@ For the multiselect listbox, you need to specify the `multiSelect` option. If th
 ### Methods
 See the plugin [wiki](https://github.com/SimonLitt/jquery-consistent-listbox/wiki/Plugin-methods).
 
-For more detailed information, please refer to the docs directory.
+For more detailed information, please refer to the [docs](https://github.com/SimonLitt/jquery-consistent-listbox/tree/main/docs) directory.
 
 Additionally standard jQuery Widget Factory methods are available, such as `option`.
 ### Events
