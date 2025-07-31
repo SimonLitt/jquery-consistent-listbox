@@ -93,4 +93,4 @@ Additionally standard jQuery Widget Factory methods are available, such as `opti
 ### Events
 onChange( event, val )
 # Example
-Please refer to the examples directory.
+Please refer to the [examples](https://github.com/SimonLitt/jquery-consistent-listbox/tree/main/examples) directory.
