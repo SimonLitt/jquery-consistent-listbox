@@ -441,7 +441,7 @@
 		},
 
 		/**
-		 * Gets list of items.
+		 * Gets list of selected items.
 		 * @param {boolean} is_with_data - Whether to return assigned data. Default true.
 		 * @returns {array} List of items.
 		 */

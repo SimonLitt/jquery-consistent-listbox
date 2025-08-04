@@ -27,8 +27,13 @@
 		<br class="clear"><br>
 	</form>
 
+	<button id="btn-length" type="button">Length</button>&nbsp;
+	<button id="btn-has-item" type="button">Is there an item  `5`</button>&nbsp;
 	<button id="btn-add" type="button">Add</button>&nbsp;
 	<button id="btn-insert" type="button">Insert</button>&nbsp;
+	<button id="btn-clear" type="button">Clear</button>&nbsp;
+	<button id="btn-replace" type="button">Replace</button>&nbsp;
+	<button id="btn-remove" type="button">Remove</button>&nbsp;
 	<button id="btn-delete" type="button">Delete</button>
 
 	<div id="output"></div>
@@ -37,6 +42,16 @@
 	var max_value = 5;
 
 	$( function() {
+		$('#btn-length').on("click", function(e) {
+			e.preventDefault();
+			$('#output').append('<p>Length is `' + $('#user_listbox').listbox('length') + '`</p>');
+		});
+
+		$('#btn-has-item').on("click", function(e) {
+			e.preventDefault();
+			$('#output').append('<p>' + ($('#user_listbox').listbox('hasItem', 5) ? 'There is the `5` item' : 'There is no `5` item!') + '`.</p>');
+		});
+
 		$('#user_listbox').listbox({
 			items: [
 				{val: '1', text: 'Item 1'},
@@ -62,6 +77,26 @@
 			let curValue = $('#user_listbox').listbox('val');
 			let curIdx = $('#user_listbox').listbox('index');
 			$('#user_listbox').listbox('insert', curIdx + 1, {val: max_value, text: 'Item ' + max_value});
+		});
+
+		$('#btn-clear').on("click", function(e) {
+			e.preventDefault();
+			$('#user_listbox').listbox('clear');
+			max_value = 0;
+		});
+
+		$('#btn-replace').on("click", function(e) {
+			e.preventDefault();
+			$('#user_listbox').listbox('replace', [
+				{val: '99', text: 'Item 99'},
+				{val: '100', text: 'Item 100', checked: true},
+			]);
+			max_value = 100;
+		});
+
+		$('#btn-remove').on("click", function(e) {
+			e.preventDefault();
+			$('#user_listbox').listbox('remove');
 		});
 
 		$('#btn-delete').on("click", function(e) {

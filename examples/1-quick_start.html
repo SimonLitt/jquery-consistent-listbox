@@ -31,6 +31,7 @@
 	</form>
 
 	<button id="btn-selected" type="button">Selected</button>&nbsp;
+	<button id="btn-items" type="button">Items</button>&nbsp;
 	<button id="btn-data" type="button">Form data</button>
 
 	<div id="output"></div>
@@ -59,6 +60,7 @@
 				{val: '3', text: 'Item 3'},
 				{val: '4', text: 'Item 4', checked: true},
 				{val: '5', text: 'Item 5'},
+				{val: '0', text: 'Item 0'},
 			],
 			onChange: function(e, val) {
 				console.log(val.old, val.cur);
@@ -84,6 +86,32 @@
 						text += ', ';
 					}
 					text += '`' + val + '` (text: `' + $('#user_multilistbox').listbox('getItemText', val) + '`)';
+				}
+				$('#output').append('<p>Multiselect listbox values: ' + text + '</p>');
+			} else {
+				$('#output').append('<p>Multiselect listbox is not selected</p>');
+			}
+		});
+
+
+		$('#btn-items').on("click", function(e) {
+			e.preventDefault();
+			if ($('#user_listbox').listbox('hasSelected')) {
+				let item = $('#user_listbox').listbox('item');
+				$('#output').append('<p>Singleselect listbox value is `' + item.val + '` with text: `' + item.text +  '`</p>');
+			} else {
+				$('#output').append('<p>Singleselect listbox is not selected</p>');
+			}
+
+			if ($('#user_multilistbox').listbox('hasSelected')) {
+				let items = $('#user_multilistbox').listbox('items');
+
+				let text = '';
+				for (const mitem of items) {
+					if (text) {
+						text += ', ';
+					}
+					text += '`' + mitem.val + '` (text: `' + mitem.text + '`)';
 				}
 				$('#output').append('<p>Multiselect listbox values: ' + text + '</p>');
 			} else {
