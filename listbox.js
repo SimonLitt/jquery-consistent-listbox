@@ -399,20 +399,35 @@
 
 		/**
 		 * Gets assigned data.
-		 * @param {boolean} is_return_text - . Default false.
-		 * @param {string} text_alias - Default `text`.
-		 * @returns {array} Assigned data.
+		 * @param {boolean} is_as_array - Whether to return the result as an array (sorted as in the listbox control), otherwise return the object (when iterating over the properties of this object, the result will be sorted by value). Default false.
+		 * @param {boolean} is_return_text - Update data object field with the item text. Default false.
+		 * @param {string} text_alias - From which property of the data to take the value of the text. Default is empty string, which means take it from the `text` property of the data object.
+		 * @returns {(array|object)}  Assigned data.
 		 */
-		getAllData: function(is_return_text = false, text_alias = '') {
+		getAllData: function(is_as_array = false, is_return_text = false, text_alias = '') {
 			let that = this;
-			let all_data = {};
-			this.element.find('input').each(function() {
-				let value = $(this).val();
-				all_data[value] = that.getItemData(value);
-				if (is_return_text) {
-					all_data[value][text_alias ? text_alias : 'text'] = $(this).parent().find('span.item-text').text();
-				}
-			});
+			let all_data;
+			if (is_as_array) {
+				all_data = [];
+				this.element.find('input').each(function() {
+					let value = $(this).val();
+					data = that.getItemData(value);
+					if (is_return_text) {
+						data[text_alias ? text_alias : 'text'] = $(this).parent().find('span.item-text').text();
+					}
+					all_data.push(data);
+
+				});
+			} else {
+				all_data = {};
+				this.element.find('input').each(function() {
+					let value = $(this).val();
+					all_data[value] = that.getItemData(value);
+					if (is_return_text) {
+						all_data[value][text_alias ? text_alias : 'text'] = $(this).parent().find('span.item-text').text();
+					}
+				});
+			}
 			return all_data;
 		},
 
@@ -524,9 +539,9 @@
 					if (is_update_text && data.hasOwnProperty(field_name)) {
 						this.setItemText(value, data[field_name]);
 					}
-					let data = this._item_data.get(_item_id);
+					let data_obj = this._item_data.get(_item_id);
 					Object.entries(data).forEach(([key, val]) => {
-						data[key] = val;
+						data_obj[key] = val;
 					});
 				}
 			}

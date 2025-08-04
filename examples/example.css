@@ -2,3 +2,29 @@
 .float-l {float: left;}
 .clear {clear: both}
 .ml-1 {margin-left: 1rem;}
+.label {width: 30%;}
+
+.field {
+	display: flex;
+	margin-bottom: 1rem;
+}
+
+.control-label {
+	flex: 0 0 auto;
+	width: 25%;
+}
+
+.control {
+	flex: 0 0 auto;
+	width: 75%;
+}
+
+.check-val {
+	display: inline-block;
+	padding-left: 1.5rem;
+}
+
+.check-input {
+	float: left;
+	margin-left: -1.5rem;
+}

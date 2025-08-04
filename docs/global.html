@@ -652,7 +652,7 @@
     
 
     
-    <h4 class="name" id="getAllData"><span class="type-signature"></span>getAllData<span class="signature">(is_return_text, text_alias)</span><span class="type-signature"> &rarr; {array}</span></h4>
+    <h4 class="name" id="getAllData"><span class="type-signature"></span>getAllData<span class="signature">(is_as_array, is_return_text, text_alias)</span><span class="type-signature"> &rarr; {array|object}</span></h4>
     
 
     
@@ -696,6 +696,29 @@
 
         <tr>
             
+                <td class="name"><code>is_as_array</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Whether to return the result as an array (sorted as in the listbox control), otherwise return the object (when iterating over the properties of this object, the result will be sorted by value). Default false.</td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>is_return_text</code></td>
             
 
@@ -712,7 +735,7 @@
 
             
 
-            <td class="description last">. Default false.</td>
+            <td class="description last">Update data object field with the item text. Default false.</td>
         </tr>
 
     
@@ -735,7 +758,7 @@
 
             
 
-            <td class="description last">Default `text`.</td>
+            <td class="description last">From which property of the data to take the value of the text. Default is empty string, which means take it from the `text` property of the data object.</td>
         </tr>
 
     
@@ -776,7 +799,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line406">line 406</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line407">line 407</a>
     </li></ul></dd>
     
 
@@ -817,6 +840,9 @@
     <dd>
         
 <span class="param-type">array</span>
+|
+
+<span class="param-type">object</span>
 
 
     </dd>
@@ -886,7 +912,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line472">line 472</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line487">line 487</a>
     </li></ul></dd>
     
 
@@ -1045,7 +1071,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line562">line 562</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line577">line 577</a>
     </li></ul></dd>
     
 
@@ -1215,7 +1241,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line461">line 461</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line476">line 476</a>
     </li></ul></dd>
     
 
@@ -1374,7 +1400,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line501">line 501</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line516">line 516</a>
     </li></ul></dd>
     
 
@@ -1556,7 +1582,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line589">line 589</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line604">line 604</a>
     </li></ul></dd>
     
 
@@ -2241,7 +2267,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line447">line 447</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line462">line 462</a>
     </li></ul></dd>
     
 
@@ -2826,7 +2852,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line424">line 424</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line439">line 439</a>
     </li></ul></dd>
     
 
@@ -2985,7 +3011,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line433">line 433</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line448">line 448</a>
     </li></ul></dd>
     
 
@@ -3642,7 +3668,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line492">line 492</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line507">line 507</a>
     </li></ul></dd>
     
 
@@ -3825,7 +3851,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line541">line 541</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line556">line 556</a>
     </li></ul></dd>
     
 
@@ -3985,7 +4011,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line571">line 571</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line586">line 586</a>
     </li></ul></dd>
     
 
@@ -4168,7 +4194,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line610">line 610</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line625">line 625</a>
     </li></ul></dd>
     
 
@@ -4828,7 +4854,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line579">line 579</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line594">line 594</a>
     </li></ul></dd>
     
 
@@ -4988,7 +5014,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line625">line 625</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line640">line 640</a>
     </li></ul></dd>
     
 
@@ -5171,7 +5197,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line482">line 482</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line497">line 497</a>
     </li></ul></dd>
     
 
@@ -5377,7 +5403,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line516">line 516</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line531">line 531</a>
     </li></ul></dd>
     
 
@@ -6123,7 +6149,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed Jul 30 2025 19:49:02 GMT+0300 (Москва, стандартное время)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon Aug 04 2025 22:18:41 GMT+0300 (Москва, стандартное время)
 </footer>
 
 <script> prettyPrint(); </script>
