@@ -50,7 +50,7 @@ if [ $(git tag -l "$version") ]; then
     for file_name in "${!publish_file_list[@]}"; do
 		file_tag_path=${publish_file_list["$file_name"]}
 		echo "  extract: $file_name..."
-		git show "v000:$file_tag_path" >> "${build_files}${file_name}" || die
+		git show "${version}:$file_tag_path" >> "${build_files}${file_name}" || die
 	done
 
 	echo "Archiving..."
