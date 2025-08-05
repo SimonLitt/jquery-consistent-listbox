@@ -72,17 +72,19 @@ For the multiselect listbox, you need to specify the `multiSelect` option. If th
 
 `multiSelect`	Type:boolean	This is a multiselect listbox, otherwise it is a singleselect listbox. Default false.
 
-`name`	Type:sting	The HTML `name` attribute identifier. Mandatory when there is more than one listbox on one page. Default `lb_name`.
+`name`	_Type:sting_	The HTML `name` attribute identifier. Mandatory when there is more than one listbox on one page. Default `lb_name`.
 
-`quiet`	Type:boolean	Disable call `onChange`. Default false.
+`quiet`	_Type:boolean_	Disable call `onChange`. Default false.
 
-`autoSort`	Type:boolean	Enable auto sorting. Default false.
+`autoSort`	_Type:boolean_	Enable auto sorting. Default false.
 
-`sortOrder`	Type:string	Sort data key. Default null.
+`sortOrder`	_Type:string_	Sort data key. Default null.
 
-`sortable`	Type:boolean	Allowed to sort manually by dragging items. Default false.
+`isSortByDataProp` 	_Type:boolean_ 	Determines whether sorting will be done by `sort_order` property of the related data. Default null, what does sort by item text mean. If true, then sort by `sort_order` property of the related data. If false, then sort by value.
 
-`sortOrderStep`	Type:number	`sort_order` data key increment step for auto sorting. Default 10.
+`sortable`	_Type:boolean_	Allowed to sort manually by dragging items. Default false.
+
+`sortOrderStep`	_Type:number_	`sort_order` data key increment step for auto sorting. Default 10.
 
 ### Methods
 See the plugin [wiki](https://github.com/SimonLitt/jquery-consistent-listbox/wiki/Plugin-methods).
