@@ -1,5 +1,5 @@
 # jquery-consistent-listbox
-jQuery singleselect and multiselect listbox plugin. The plugin designed to display consistently and correctly on both mobile devices and desktops. The plugin can be used inside of html forms.
+jQuery UI singleselect and multiselect listbox plugin. The plugin designed to display consistently and correctly on both mobile devices and desktops. The plugin can be used inside of html forms.
 
 <img width="228" height="356" alt="slb" src="https://github.com/user-attachments/assets/d584878e-797b-4ff0-bef4-dc36f0698532" />
 <img width="224" height="356" alt="mlb" src="https://github.com/user-attachments/assets/ae975266-4364-42a6-a452-56ff14627335" />
