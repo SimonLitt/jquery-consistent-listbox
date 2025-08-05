@@ -396,7 +396,7 @@
 		 * @returns {number} `sort_order` property of the related data.
 		 */
 		getSortOrder: function() {
-			return getItemDataVar(this.val(), this._get_sort_key());
+			return this.getItemDataVar(this.val(), this._get_sort_key());
 		},
 
 		/**
@@ -405,7 +405,6 @@
 		 * @param {number} sort_order - `sort_order` value.
 		 */
 		setSortOrder: function(sort_order) {
-			console.log();
 			if (typeof sort_order !== 'number') {
 				sort_order = parseInt(sort_order, 10) || 0;
 			}
@@ -423,7 +422,7 @@
 
 		/**
 		 * Sets selected item text.
-		 * {string} text - New text for the selected item.
+		 * @param {string} text - New text for the selected item.
 		 */
 		setText: function(text) {
 			this.setItemText(this.val(), text);
@@ -601,6 +600,7 @@
 
 		/**
 		 * Replaces the user-defined data with a new object by item value.
+		 * @param {string} value - An item value.
 		 * @param {object} new_data - Data object.
 		 * @param {string=} [is_update_text=false] - Whether to update the item text. Default false.
 		 * @param {string=} [text_alias=""] - From which property of the data to take the value of the text. Default is empty string, which means take it from the `text` property of the data object.
@@ -616,9 +616,33 @@
 					if (is_update_text &amp;&amp; new_data.hasOwnProperty(field_name)) {
 						this.setItemText(value, new_data[field_name]);
 					}
-					this._item_data.set(new_data);
+					this._item_data.set(_item_id, new_data);
 				}
 			}
+		},
+
+		/**
+		 * Replaces selected item value.
+		 * @param {string} new_value - New item value.
+		 */
+		setVal: function(new_value) {
+			this.setItemVal(this.val(), new_value);
+		},
+
+		/**
+		 * Replaces item value by item value.
+		 * @param {string} value - An item value.
+		 * @param {string} new_value - New item value.
+		 */
+		setItemVal: function(value, new_value) {
+			this.element.find('input[value=\'' + value + '\']').val(new_value);;
+			let old_data = this.getItemData(value);
+			let _item_id = String(value)
+			if (old_data) {
+				this._item_data.delete(String(value));
+			}
+
+			this._item_data.set(String(new_value), old_data);
 		},
 
 		/**
@@ -841,13 +865,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#clear">clear</a></li><li><a href="global.html#delete">delete</a></li><li><a href="global.html#getAllData">getAllData</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getDataVar">getDataVar</a></li><li><a href="global.html#getItem">getItem</a></li><li><a href="global.html#getItemData">getItemData</a></li><li><a href="global.html#getItemDataVar">getItemDataVar</a></li><li><a href="global.html#getItemIndex">getItemIndex</a></li><li><a href="global.html#getItemText">getItemText</a></li><li><a href="global.html#getSortOrder">getSortOrder</a></li><li><a href="global.html#getText">getText</a></li><li><a href="global.html#hasItem">hasItem</a></li><li><a href="global.html#hasSelected">hasSelected</a></li><li><a href="global.html#index">index</a></li><li><a href="global.html#insert">insert</a></li><li><a href="global.html#item">item</a></li><li><a href="global.html#items">items</a></li><li><a href="global.html#length">length</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#replace">replace</a></li><li><a href="global.html#replaceData">replaceData</a></li><li><a href="global.html#replaceItemData">replaceItemData</a></li><li><a href="global.html#setDataVar">setDataVar</a></li><li><a href="global.html#setItemDataVar">setItemDataVar</a></li><li><a href="global.html#setItemText">setItemText</a></li><li><a href="global.html#setSortOrder">setSortOrder</a></li><li><a href="global.html#setText">setText</a></li><li><a href="global.html#sort">sort</a></li><li><a href="global.html#sortBy">sortBy</a></li><li><a href="global.html#unsetDataVar">unsetDataVar</a></li><li><a href="global.html#unsetItemDataVar">unsetItemDataVar</a></li><li><a href="global.html#updateData">updateData</a></li><li><a href="global.html#updateItemData">updateItemData</a></li><li><a href="global.html#val">val</a></li><li><a href="global.html#vals">vals</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#clear">clear</a></li><li><a href="global.html#delete">delete</a></li><li><a href="global.html#getAllData">getAllData</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getDataVar">getDataVar</a></li><li><a href="global.html#getItem">getItem</a></li><li><a href="global.html#getItemData">getItemData</a></li><li><a href="global.html#getItemDataVar">getItemDataVar</a></li><li><a href="global.html#getItemIndex">getItemIndex</a></li><li><a href="global.html#getItemText">getItemText</a></li><li><a href="global.html#getSortOrder">getSortOrder</a></li><li><a href="global.html#getText">getText</a></li><li><a href="global.html#hasItem">hasItem</a></li><li><a href="global.html#hasSelected">hasSelected</a></li><li><a href="global.html#index">index</a></li><li><a href="global.html#insert">insert</a></li><li><a href="global.html#item">item</a></li><li><a href="global.html#items">items</a></li><li><a href="global.html#length">length</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#replace">replace</a></li><li><a href="global.html#replaceData">replaceData</a></li><li><a href="global.html#replaceItemData">replaceItemData</a></li><li><a href="global.html#setDataVar">setDataVar</a></li><li><a href="global.html#setItemDataVar">setItemDataVar</a></li><li><a href="global.html#setItemText">setItemText</a></li><li><a href="global.html#setItemVal">setItemVal</a></li><li><a href="global.html#setSortOrder">setSortOrder</a></li><li><a href="global.html#setText">setText</a></li><li><a href="global.html#setVal">setVal</a></li><li><a href="global.html#sort">sort</a></li><li><a href="global.html#sortBy">sortBy</a></li><li><a href="global.html#unsetDataVar">unsetDataVar</a></li><li><a href="global.html#unsetItemDataVar">unsetItemDataVar</a></li><li><a href="global.html#updateData">updateData</a></li><li><a href="global.html#updateItemData">updateItemData</a></li><li><a href="global.html#val">val</a></li><li><a href="global.html#vals">vals</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Tue Aug 05 2025 10:46:39 GMT+0300 (Москва, стандартное время)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Tue Aug 05 2025 13:23:02 GMT+0300 (Москва, стандартное время)
 </footer>
 
 <script> prettyPrint(); </script>

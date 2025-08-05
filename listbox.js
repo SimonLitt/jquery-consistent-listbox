@@ -368,7 +368,7 @@
 		 * @returns {number} `sort_order` property of the related data.
 		 */
 		getSortOrder: function() {
-			return getItemDataVar(this.val(), this._get_sort_key());
+			return this.getItemDataVar(this.val(), this._get_sort_key());
 		},
 
 		/**
@@ -377,7 +377,6 @@
 		 * @param {number} sort_order - `sort_order` value.
 		 */
 		setSortOrder: function(sort_order) {
-			console.log();
 			if (typeof sort_order !== 'number') {
 				sort_order = parseInt(sort_order, 10) || 0;
 			}
@@ -395,7 +394,7 @@
 
 		/**
 		 * Sets selected item text.
-		 * {string} text - New text for the selected item.
+		 * @param {string} text - New text for the selected item.
 		 */
 		setText: function(text) {
 			this.setItemText(this.val(), text);
@@ -573,6 +572,7 @@
 
 		/**
 		 * Replaces the user-defined data with a new object by item value.
+		 * @param {string} value - An item value.
 		 * @param {object} new_data - Data object.
 		 * @param {string=} [is_update_text=false] - Whether to update the item text. Default false.
 		 * @param {string=} [text_alias=""] - From which property of the data to take the value of the text. Default is empty string, which means take it from the `text` property of the data object.
@@ -588,9 +588,33 @@
 					if (is_update_text && new_data.hasOwnProperty(field_name)) {
 						this.setItemText(value, new_data[field_name]);
 					}
-					this._item_data.set(new_data);
+					this._item_data.set(_item_id, new_data);
 				}
 			}
+		},
+
+		/**
+		 * Replaces selected item value.
+		 * @param {string} new_value - New item value.
+		 */
+		setVal: function(new_value) {
+			this.setItemVal(this.val(), new_value);
+		},
+
+		/**
+		 * Replaces item value by item value.
+		 * @param {string} value - An item value.
+		 * @param {string} new_value - New item value.
+		 */
+		setItemVal: function(value, new_value) {
+			this.element.find('input[value=\'' + value + '\']').val(new_value);;
+			let old_data = this.getItemData(value);
+			let _item_id = String(value)
+			if (old_data) {
+				this._item_data.delete(String(value));
+			}
+
+			this._item_data.set(String(new_value), old_data);
 		},
 
 		/**
