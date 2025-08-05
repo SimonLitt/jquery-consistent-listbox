@@ -594,8 +594,8 @@
 		},
 
 		/**
-		 * Selects the specified item.
-		 * @param {(string|string[])} value - An item value, or an array of item values. If the value is null or undefined, the selection is removed.
+		 * Selects the specified item or multiple specified items for multiselect.
+		 * @param {(string|string[])} value - An item value, or an array of item values. If the value is null or undefined, the selection is removed. For singleselect selects the last item in the array.
 		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
 		 * @param {object=} [e=null] - jQuery event or another data which will be transferred to `onChange`. Default null.
 		 */
