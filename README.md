@@ -93,7 +93,8 @@ For more detailed information, please refer to the [docs](https://github.com/Sim
 
 Additionally standard jQuery Widget Factory methods are available, such as `option`.
 ### Events
-onChange( event, val )
-onClick( event, val )
+**onChange( event, val )**
+
+**onClick( event, val )**
 # Example
 Please refer to the [examples](https://github.com/SimonLitt/jquery-consistent-listbox/tree/main/examples) directory.
