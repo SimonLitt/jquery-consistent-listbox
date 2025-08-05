@@ -23,6 +23,7 @@
 		* @property {boolean} quiet - Disable call `onChange`. Default false.
 		* @property {boolean} autoSort - Enable auto sorting. Default false.
 		* @property {string} sortOrder - Sort data key. Default null.
+		* @property {boolean} isSortByDataProp - Determines whether sorting will be done by `sort_order` property of the related data. Default null, what does sort by item text mean. If true, then sort by `sort_order` property of the related data. If false, then sort by value.
 		* @property {boolean} sortable - Allowed to sort manually by dragging items. Default false.
 		* @property {number} sortOrderStep - `sort_order` data key increment step for auto sorting. Default 10.
 		*/
@@ -32,6 +33,7 @@
 			quiet: false,
 			autoSort: false,
 			sortOrder: null,
+			isSortByDataProp: null,
 			sortable: false,
 			sortOrderStep: 10,
 		},
@@ -50,18 +52,30 @@
 
 			this.element.delegate('input', 'change', $.proxy( this._itemChange, null, this));
 			this.element.delegate('input', 'click', $.proxy( this._itemClick, null, this));
-			if (this.options.sortable && !this.options.autoSort) {
-				this._set_sortable();
+			if (this.options.sortable) {
+				if(!this.options.autoSort) {
+					this._set_sortable();
+				} else {
+					this._sort_opt_warning();
+				}
 			}
 			this._last_val = this.options.multiSelect ? this._sorted_vals() : this.val();
 			this._wait_reorder = false;
+		},
+
+		_sort_opt_warning: function() {
+			console.warn('simonlitt.listbox widget: because of the "autoSort" option the "sortable" option is ignored!');
+		},
+
+		_get_sort_key: function() {
+			return this.options.sortOrder ? this.options.sortOrder : 'sort_order';
 		},
 
 		_reorder: function() {
 			let that = this;
 			let sort_order = 1;
 			this.element.find('input').each(function() {
-				that.setItemDataVar($(this).val(), 'sort_order', sort_order);
+				that.setItemDataVar($(this).val(), that._get_sort_key(), sort_order);
 				sort_order += that.options.sortOrderStep;
 			});
 		},
@@ -105,7 +119,7 @@
 			return selected_input.closest('.ui-menu-item').index();
 		},
 
-		_insert: function(index, item, e) {
+		_insert: function(index, item) {
 			let value = item.hasOwnProperty('val') ? String(item.val) : '';
 			if (this._item_data.has(value)) {
 				return false;
@@ -116,9 +130,13 @@
 				this._uncheck_all();
 			}
 			let html_class = item.hasOwnProperty('class') ? String(item.class) : '';
-			let sort_order = item.hasOwnProperty('sort_order') ? parseInt(item.sort_order, 10) : 0;
-			if (this.options.sortable && this.options.sortOrder) {
-				sort_order = 1 + this.options.sortOrderStep * this.length();
+			let sort_order = null;
+
+			if (item.hasOwnProperty('sort_order')) {
+				sort_order = parseInt(item.sort_order, 10) || 0;
+				if (this.options.sortable) {
+					sort_order = 1 + this.options.sortOrderStep * this.length();
+				}
 			}
 
 			let html = this._item_html(text, value, html_class, is_checked);
@@ -136,10 +154,10 @@
 					this.element.append(html);
 				}
 			}
-			e
+
 			let data = item.hasOwnProperty('data') && (typeof item.data == 'object') ? item.data : {};
-			if (sort_order) {
-				data['sort_order'] = sort_order;
+			if (sort_order !== null) {
+				data[this._get_sort_key()] = sort_order;
 			}
 			this._item_data.set(value, data);
 			return true;
@@ -149,13 +167,13 @@
 		 * Adds a item.
 		 *
 		 * @param {lb_item} item - Item data.
-		 * @param {boolean} is_quiet - Disable or enable call `onChange`. Default false.
-		 * @param {object} e - jQuery event or another data which will be transferred to `onChange`. Default null.
+		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
+		 * @param {object=} [e=null] - jQuery event or another data which will be transferred to `onChange`. Default null.
 		 */
 		add: function(item, is_quiet = false, e = null) {
 			if (this._insert(null, item)) {
 				if (this.options.autoSort) {
-					this.sort(this.options.sortOrder);
+					this.sort();
 				}
 				this._change(is_quiet, e);
 			}
@@ -166,13 +184,13 @@
 		 *
 		 * @param {number} index - Insert position. `autoSort` option can change position after insetrtion.
 		 * @param {lb_item} item - Item data.
-		 * @param {boolean} is_quiet - Disable or enable call `onChange`. Default false.
-		 * @param {object} e - jQuery event or another data which will be transferred to `onChange`. Default null.
+		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
+		 * @param {object=} [e=null] - jQuery event or another data which will be transferred to `onChange`. Default null.
 		 */
 		insert: function(index, item, is_quiet = false, e = null) {
 			if (this._insert(index, item)) {
 				if (this.options.autoSort) {
-					this.sort(this.options.sortOrder);
+					this.sort();
 				}
 				this._change(is_quiet, e);
 			}
@@ -181,8 +199,8 @@
 		/**
 		 * Removes the selected items.
 		 *
-		 * @param {boolean} is_quiet - Disable or enable call `onChange`. Default false.
-		 * @param {object} e - jQuery event or another data which will be transferred to `onChange`. Default null.
+		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
+		 * @param {object=} [e=null] - jQuery event or another data which will be transferred to `onChange`. Default null.
 		 * @returns {boolean} Whether the selected items were found and removed.
 		 */
 		remove: function(is_quiet = false, e = null) {
@@ -194,9 +212,6 @@
 					that._item_data.delete($(this).val());
 				});
 				chk_list.off().parent().remove();
-				if (this.options.autoSort) {
-					this.sort(this.options.sortOrder);
-				}
 				this._change(is_quiet, e);
 			}
 			return has_affected;
@@ -206,8 +221,8 @@
 		 * Deletes the specified item.
 		 *
 		 * @param {string} value - Item value.
-		 * @param {boolean} is_quiet - Disable or enable call `onChange`. Default false.
-		 * @param {object} e - jQuery event or another data which will be transferred to `onChange`. Default null.
+		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
+		 * @param {object=} [e=null] - jQuery event or another data which will be transferred to `onChange`. Default null.
 		 * @returns {boolean} Whether the specified items were found and deleted.
 		 */
 		delete: function(value, is_quiet = false, e = null) {
@@ -216,9 +231,6 @@
 			if (has_affected) {
 				this._item_data.delete(String(value));
 				chk_list.off().parent().remove();
-				if (this.options.autoSort) {
-					this.sort(this.options.sortOrder);
-				}
 				this._change(is_quiet, e);
 			}
 			return has_affected
@@ -237,8 +249,8 @@
 		/**
 		 * Deletes all items.
 		 *
-		 * @param {boolean} is_quiet - Disable or enable call `onChange`. Default false.
-		 * @param {object} e - jQuery event or another data which will be transferred to `onChange`. Default null.
+		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`.
+		 * @param {object=} [e=null] - jQuery event or another data which will be transferred to `onChange`.
 		 */
 		clear: function(is_quiet = false, e = null) {
 			if (this._clear(e)) {
@@ -252,7 +264,7 @@
 					this._insert(null, item);
 				}
 				if (this.options.autoSort) {
-					this.sort(this.options.sortOrder);
+					this.sort();
 				}
 			}
 		},
@@ -260,8 +272,8 @@
 		/**
 		 * Deletes all items and insert specified new items.
 		 *
-		 * @param {boolean} is_quiet - Disable or enable call `onChange`. Default false.
-		 * @param {object} e - jQuery event or another data which will be transferred to `onChange`. Default null.
+		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
+		 * @param {object=} [e=null] - jQuery event or another data which will be transferred to `onChange`. Default null.
 		 */
 		replace: function(items, is_quiet = false, e = null) {
 			this._clear(e);
@@ -313,22 +325,30 @@
 		/**
 		 * Sorts items.
 		 *
-		 * @param {boolean} is_sort_by_order - Sort by `sort_order` property of the related data. Default null.
 		 */
-		sort: function(is_sort_by_order = null) {
+		sort: function() {
+			this.sortBy(this.options.isSortByDataProp)
+		},
+
+		/**
+		 * Sorts items.
+		 *
+		 * @param {boolean} [is_sort_by_data_prop=null] - Determines whether sorting will be done by `sort_order` property of the related data. Default null, what does sort by item text mean. If true, then sort by `sort_order` property of the related data. If false, then sort by value.
+		 */
+		sortBy: function(is_sort_by_data_prop = null) {
 			let that = this;
 			this.element.html($(this.element.find('label.ui-menu-item').toArray().sort(function(a, b) {
 				let a_val, b_val;
-				if (is_sort_by_order === null) {
+				if (is_sort_by_data_prop === null) {
 					a_val = $(a).find('span.item-text').text();
 					b_val = $(b).find('span.item-text').text();
 				} else {
 					a_val = $(a).find('input.form-check-input').val();
 					b_val = $(b).find('input.form-check-input').val();
 
-					if (is_sort_by_order) {
-						let a_order = parseInt(that.getItemDataVar(a_val, 'sort_order'), 10) || 0;
-						let b_order = parseInt(that.getItemDataVar(b_val, 'sort_order'), 10) || 0;
+					if (is_sort_by_data_prop) {
+						let a_order = parseInt(that.getItemDataVar(a_val, that._get_sort_key()), 10) || 0;
+						let b_order = parseInt(that.getItemDataVar(b_val, that._get_sort_key()), 10) || 0;
 
 						if (a_order === b_order) {
 							a_val = $(a).find('span.item-text').text();
@@ -338,7 +358,7 @@
 						}
 					}
 				}
-				return a_val.localeCompare(b_val);
+				return a_val.localeCompare(b_val, undefined, { numeric: true });
 			})));
 		},
 
@@ -348,16 +368,20 @@
 		 * @returns {number} `sort_order` property of the related data.
 		 */
 		getSortOrder: function() {
-			return getItemDataVar(this.val(), 'sort_order');
+			return getItemDataVar(this.val(), this._get_sort_key());
 		},
 
 		/**
-		 * Sets `sort_order` property of the related data..
+		 * Sets `sort_order` property of the related data.
 		 *
 		 * @param {number} sort_order - `sort_order` value.
 		 */
 		setSortOrder: function(sort_order) {
-			this.setItemDataVar(this.val(), 'sort_order', sort_order);
+			console.log();
+			if (typeof sort_order !== 'number') {
+				sort_order = parseInt(sort_order, 10) || 0;
+			}
+			this.setItemDataVar(this.val(), this._get_sort_key(), sort_order);
 		},
 
 		/**
@@ -399,9 +423,9 @@
 
 		/**
 		 * Gets assigned data.
-		 * @param {boolean} is_as_array - Whether to return the result as an array (sorted as in the listbox control), otherwise return the object (when iterating over the properties of this object, the result will be sorted by value). Default false.
-		 * @param {boolean} is_return_text - Update data object field with the item text. Default false.
-		 * @param {string} text_alias - From which property of the data to take the value of the text. Default is empty string, which means take it from the `text` property of the data object.
+		 * @param {boolean=} [is_as_array=false] - Whether to return the result as an array (sorted as in the listbox control), otherwise return the object (when iterating over the properties of this object, the result will be sorted by value). Default false.
+		 * @param {boolean=} [is_return_text=false] - Update data object field with the item text. Default false.
+		 * @param {string=} [text_alias=""] - From which property of the data to take the value of the text. Default is empty string, which means take it from the `text` property of the data object.
 		 * @returns {(array|object)}  Assigned data.
 		 */
 		getAllData: function(is_as_array = false, is_return_text = false, text_alias = '') {
@@ -433,7 +457,7 @@
 
 		/**
 		 * Gets selected item object.
-		 * @param {boolean} is_with_data - Whether to return assigned data. Default true.
+		 * @param {boolean=} [is_with_data=true] - Whether to return assigned data. Default true.
 		 * @returns {lb_item} Selected item object.
 		 */
 		item: function(is_with_data = true) {
@@ -442,7 +466,7 @@
 
 		/**
 		 * Gets list of selected items.
-		 * @param {boolean} is_with_data - Whether to return assigned data. Default true.
+		 * @param {boolean=} [is_with_data=true] - Whether to return assigned data. Default true.
 		 * @returns {array} List of items.
 		 */
 		items: function(is_with_data = true) {
@@ -470,7 +494,7 @@
 		/**
 		 * Gets item object by an item value.
 		 * @param {string} value - An item value.
-		 * @param {boolean} is_with_data - Whether to return assigned data. Default true.
+		 * @param {boolean=} [is_with_data=true] - Whether to return assigned data. Default true.
 		 * @returns {lb_item} Item object.
 		 */
 		getItem: function(value, is_with_data = true) {
@@ -491,8 +515,8 @@
 		/**
 		 * Updates related user-defined data. All unaffected properties remain unchanged.
 		 * @param {object} data - Data object.
-		 * @param {string} is_update_text - Whether to update the item text. Default false.
-		 * @param {string} text_alias - From which property of the data to take the value of the text. Default is empty string, which means take it from the `text` property of the data object.
+		 * @param {string=} [is_update_text=false] - Whether to update the item text. Default false.
+		 * @param {string=} [text_alias=""] - From which property of the data to take the value of the text. Default is empty string, which means take it from the `text` property of the data object.
 		 */
 		updateData: function(data, is_update_text = false, text_alias = '') {
 			this.updateItemData(this.val(), data, is_update_text, text_alias);
@@ -501,8 +525,8 @@
 		/**
 		 * Replaces the user-defined data with a new object.
 		 * @param {object} new_data - Data object.
-		 * @param {string} is_update_text - Whether to update the item text. Default false.
-		 * @param {string} text_alias - From which property of the data to take the value of the text. Default is empty string, which means take it from the `text` property of the data object.
+		 * @param {string=} [is_update_text=false] - Whether to update the item text. Default false.
+		 * @param {string=} [text_alias=""] - From which property of the data to take the value of the text. Default is empty string, which means take it from the `text` property of the data object.
 		 */
 		replaceData: function(new_data, is_update_text = false, text_alias = '') {
 			this.replaceItemData(this.val(), new_data, is_update_text, text_alias);
@@ -525,8 +549,8 @@
 		 * Updates related user-defined data by item value. All unaffected properties remain unchanged.
 		 * @param {string} value - An item value.
 		 * @param {object} data - Data object.
-		 * @param {string} is_update_text - Whether to update the item text. Default false.
-		 * @param {string} text_alias - From which property of the data to take the value of the text. Default is empty string, which means take it from the `text` property of the data object.
+		 * @param {string=} [is_update_text=false] - Whether to update the item text. Default false.
+		 * @param {string=} [text_alias=""] - From which property of the data to take the value of the text. Default is empty string, which means take it from the `text` property of the data object.
 		 */
 		updateItemData: function(value, data, is_update_text = false, text_alias = '') {
 			if (value !== null) {
@@ -550,8 +574,8 @@
 		/**
 		 * Replaces the user-defined data with a new object by item value.
 		 * @param {object} new_data - Data object.
-		 * @param {string} is_update_text - Whether to update the item text. Default false.
-		 * @param {string} text_alias - From which property of the data to take the value of the text. Default is empty string, which means take it from the `text` property of the data object.
+		 * @param {string=} [is_update_text=false] - Whether to update the item text. Default false.
+		 * @param {string=} [text_alias=""] - From which property of the data to take the value of the text. Default is empty string, which means take it from the `text` property of the data object.
 		 */
 		replaceItemData: function(value, new_data, is_update_text = false, text_alias = '') {
 			if (value !== null) {
@@ -655,6 +679,7 @@
 
 		_setOption: function(key, value) {
 			let is_reorder = false;
+			let is_resort = false;
 			switch( key ) {
 				case 'multiSelect':
 					this.element.find('input').attr('type', value ? 'checkbox' : 'radio');
@@ -683,6 +708,7 @@
 						if (this.options.sortable && !this.options.autoSort) {
 							this.element.sortable('destroy');
 						}
+						is_resort = true;
 					} else {
 						if (this.options.sortable && this.options.autoSort) {
 							this._set_sortable();
@@ -692,12 +718,20 @@
 				case 'sortOrderStep':
 					is_reorder = true;
 					break;
+				case 'isSortByDataProp':
+					if (this.options.autoSort) {
+						is_resort = true;
+					}
+					break;
 			}
 
 			this._super(key, value);
 
 			if (is_reorder) {
 				this._reorder();
+			}
+			if (is_resort) {
+				this.sort();
 			}
 		},
 

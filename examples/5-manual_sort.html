@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>jQuery consistent listbox - User data</title>
+		<title>jQuery consistent listbox - Manual sort</title>
 
 		<!-- need to include jQuery -->
 		<script src="https://code.jquery.com/jquery-3.7.1.min.js" type="text/javascript" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -51,23 +51,24 @@
 			<div class="field">
 				<label class="control-label">Account sort order:</label>
 				<div class="control">
-					<input type="number" min="1" step="1" value="" placeholder="Account sort order" id="input-sort-order">
+					<b><span id="txt-sort-order"></span></b>
 				</div>
 			</div>
 		</div>
 		<br class="clear"><br>
-	<button id="btn-data" type="button">Form data</button>
-
+	<button id="btn-data" type="button">Form data</button>&nbsp;
+	<button id="btn-change" type="button">Change to auto</button>
 	<div id="output"></div>
 	<script><!--
 
 	var userData = [
-			{id: 777, name: 'John',		is_premium: true,	sort_order: 11 },
-			{id: 474, name: 'Megan',	is_premium: true,	sort_order: 22 },
-			{id: 212, name: 'Jack',		is_premium: false,	sort_order: 85 },
-			{id: 189, name: 'Emma',		is_premium: false,	sort_order: 100 },
-			{id: 976, name: 'Alice',	is_premium: true,	sort_order: 1 },
+			{id: 777, name: 'John',		is_premium: true,	my_sort_order: 11 },
+			{id: 474, name: 'Megan',	is_premium: true,	my_sort_order: 22 },
+			{id: 212, name: 'Jack',		is_premium: false,	my_sort_order: 85 },
+			{id: 189, name: 'Emma',		is_premium: false,	my_sort_order: 100 },
+			{id: 976, name: 'Alice',	is_premium: true,	my_sort_order: 1 },
 		];
+	var bella = {id: 5, name: 'Bella',	is_premium: false,	my_sort_order: 75 };
 
 	$( function() {
 
@@ -75,16 +76,14 @@
 			let old_data = $('#user_listbox').listbox('getItemData', previous_id);
 			if (old_data) {
 				old_data['name'] = $('#input-name').val();
-				old_data['sort_order'] = parseInt($('#input-sort-order').val());
 				old_data['is_premium'] = $("input:radio[name=is_premium]:checked").val() != 0;
-
 				$('#user_listbox').listbox('updateItemData', previous_id, old_data, is_update_text = true, text_alias = 'name');
 			}
 		}
 
 		function load_data(data) {
 			$('#input-name').val(data ? data['name'] : '');
-			$('#input-sort-order').val(data ? data['sort_order'] : 1);
+			$('#txt-sort-order').html(data ? data['my_sort_order'] : 1);
 			$("input:radio[name=is_premium]").prop('checked', false).filter('[value="' +  (data ? (data['is_premium'] ? '1': '0') : '0') + '"]').prop('checked', true);
 
 			if (data) {
@@ -97,8 +96,9 @@
 			lbItems.push({val: user.id, text: user.name, data: user});
 		}
 
-
 		$('#user_listbox').listbox({
+			sortable: true,
+			sortOrder: 'my_sort_order',
 			items: lbItems,
 			onChange: function(e, val) {
 				if (val.old) {
@@ -108,6 +108,7 @@
 			}
 		});
 
+		$('#user_listbox').listbox('sortBy', true);
 
 		$('#btn-data').on("click", function(e) {
 			e.preventDefault();
@@ -122,10 +123,17 @@
 				if (text) {
 					text += ',<br>';
 				}
-				text += 'ID: <i>' + user.id + '</i>; Name: <b>`' + user.name + '`</b>; ' + 'Is premium account: <i>' + user.is_premium + '</i>; ' + 'Sort order: <i>' + user.sort_order + '</i>';
+				text += 'ID: <i>' + user.id + '</i>; Name: <b>`' + user.name + '`</b>; ' + 'Is premium account: <i>' + user.is_premium + '</i>; ' + 'Sort order: <i>' + user.my_sort_order + '</i>';
 			}
 
 			$('#output').append('<p>Listbox data:<br>' + text + '.</p>');
+		});
+
+		$('#btn-change').on("click", function(e) {
+			e.preventDefault();
+			$(this).prop('disabled', true);
+			$('#user_listbox').listbox('option', {isSortByDataProp: false, autoSort: true});
+			$('#user_listbox').listbox('add', {val: bella.id, text: bella.name, data: bella});
 		});
 	});
 	//--></script>

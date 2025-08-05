@@ -27,7 +27,6 @@
 	margin: unset;
 }
 
-
 .sl-listbox.ui-widget-content .ui-state-active {
 	background: #b5caea;
 }
@@ -35,7 +34,6 @@
 .sl-listbox label:hover {
 	border: 1px solid #ccc;
 }
-
 
 .sl-listbox label.ui-sortable-helper {
 	border: 1px solid #aaa;
@@ -54,7 +52,6 @@
 .sl-listbox label i.fas {
 	float: right;
 }
-
 
 .sl-listbox input.form-check-input {
 	-webkit-appearance: none;
@@ -90,6 +87,7 @@
 .sl-listbox input[type="radio"].form-check-input::before {
 	clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
 }
+
 .sl-listbox input[type="checkbox"].form-check-input::before {
 	clip-path: polygon(0% 38%, 38% 38%, 38% 0%, 62% 0%, 62% 38%, 100% 38%, 100% 62%, 62% 62%, 62% 100%, 38% 100%, 38% 62%, 0% 62%);;
 }
