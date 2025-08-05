@@ -47,8 +47,11 @@
 				{val: '5', text: 'Item 5'},
 			],
 			onChange: function(e, val) {
-				console.log(val.old, val.cur);
-			}
+				console.log('onChange', val.old, val.cur);
+			},
+			onClick: function(e, val) {
+				console.log('onClick', val);
+			},
 		});
 
 		$('#user_multilistbox').listbox({
@@ -62,8 +65,11 @@
 				{val: '5', text: 'Item 5'},
 			],
 			onChange: function(e, val) {
-				console.log(val.old, val.cur);
-			}
+				console.log('multilistbox onChange', val.old, val.cur);
+			},
+			onClick: function(e, val) {
+				console.log('multilistbox onClick', val);
+			},
 		});
 
 		$('#btn-selected').on("click", function(e) {
