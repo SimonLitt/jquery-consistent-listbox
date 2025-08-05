@@ -31,7 +31,8 @@
 	</form>
 
 	<button id="btn-selected" type="button">Selected</button>&nbsp;
-	<button id="btn-items" type="button">Items</button>&nbsp;
+	<button id="btn-set" type="button">Set selected</button>&nbsp;
+	<button id="btn-unselect" type="button">Unselect</button>&nbsp;
 	<button id="btn-data" type="button">Form data</button>
 
 	<div id="output"></div>
@@ -93,29 +94,16 @@
 		});
 
 
-		$('#btn-items').on("click", function(e) {
+		$('#btn-set').on("click", function(e) {
 			e.preventDefault();
-			if ($('#user_listbox').listbox('hasSelected')) {
-				let item = $('#user_listbox').listbox('item');
-				$('#output').append('<p>Singleselect listbox value is `' + item.val + '` with text: `' + item.text +  '`</p>');
-			} else {
-				$('#output').append('<p>Singleselect listbox is not selected</p>');
-			}
+			$('#user_listbox').listbox('select', 5);
+			$('#user_multilistbox').listbox('select', [5, 2]);
+		});
 
-			if ($('#user_multilistbox').listbox('hasSelected')) {
-				let items = $('#user_multilistbox').listbox('items');
-
-				let text = '';
-				for (const mitem of items) {
-					if (text) {
-						text += ', ';
-					}
-					text += '`' + mitem.val + '` (text: `' + mitem.text + '`)';
-				}
-				$('#output').append('<p>Multiselect listbox values: ' + text + '</p>');
-			} else {
-				$('#output').append('<p>Multiselect listbox is not selected</p>');
-			}
+		$('#btn-unselect').on("click", function(e) {
+			e.preventDefault();
+			$('#user_listbox').listbox('select');
+			$('#user_multilistbox').listbox('select', null);
 		});
 
 		$('#btn-data').on("click", function(e) {

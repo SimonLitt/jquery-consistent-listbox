@@ -594,19 +594,47 @@
 		},
 
 		/**
+		 * Selects the specified item.
+		 * @param {(string|string[])} value - An item value, or an array of item values. If the value is null or undefined, the selection is removed.
+		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
+		 * @param {object=} [e=null] - jQuery event or another data which will be transferred to `onChange`. Default null.
+		 */
+		select: function(value, is_quiet = false, e = null) {
+			this._uncheck_all();
+			this.element.find('input.form-check-input').prop('checked', false);
+			if (value !== null || value === undefined) {
+				let list_item;
+				if (Array.isArray(value)) {
+					for (const item_val of value) {
+						list_item = this.element.find('input.form-check-input[value=\'' + item_val + '\']').prop('checked', true);
+						this._itemSetMark(this, list_item);
+					}
+				} else {
+					list_item = this.element.find('input.form-check-input[value=\'' + value + '\']').prop('checked', true);
+					this._itemSetMark(this, list_item);
+				}
+			}
+			this._change(is_quiet, e);
+		},
+
+		/**
 		 * Replaces selected item value.
 		 * @param {string} new_value - New item value.
+		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
+		 * @param {object=} [e=null] - jQuery event or another data which will be transferred to `onChange`. Default null.
 		 */
-		setVal: function(new_value) {
-			this.setItemVal(this.val(), new_value);
+		setVal: function(new_value, is_quiet = false, e = null) {
+			this.setItemVal(this.val(), new_value, is_quiet, e);
 		},
 
 		/**
 		 * Replaces item value by item value.
 		 * @param {string} value - An item value.
 		 * @param {string} new_value - New item value.
+		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
+		 * @param {object=} [e=null] - jQuery event or another data which will be transferred to `onChange`. Default null.
 		 */
-		setItemVal: function(value, new_value) {
+		setItemVal: function(value, new_value, is_quiet = false, e = null) {
 			this.element.find('input[value=\'' + value + '\']').val(new_value);;
 			let old_data = this.getItemData(value);
 			let _item_id = String(value)
@@ -615,6 +643,7 @@
 			}
 
 			this._item_data.set(String(new_value), old_data);
+			this._change(is_quiet, e);
 		},
 
 		/**
@@ -784,8 +813,7 @@
 			that._trigger('onClick', e, list_item.val());
 		},
 
-		_itemChange: function(that, e) {
-			let list_item = $(this);
+		_itemSetMark: function(that, list_item) {
 			if (that.options.multiSelect) {
 				if (list_item.prop('checked')) {
 					list_item.parent().addClass("ui-state-active");
@@ -798,6 +826,10 @@
 					list_item.parent().addClass("ui-state-active");
 				}
 			}
+		},
+
+		_itemChange: function(that, e) {
+			that._itemSetMark(that, $(this))
 			that._change(false, e);
 		},
 
