@@ -11,7 +11,7 @@
 	padding: 0.2rem 0.5rem;
 }
 
-.sl-listbox input.form-check-input, .sl-listbox label, .sl-listbox label i.fas {
+.sl-listbox input.form-check-input, .sl-listbox label {
 	font-size: 1rem;
 }
 
@@ -46,11 +46,6 @@
 
 .sl-listbox input.form-check-input {
 	margin: 0;
-}
-
-
-.sl-listbox label i.fas {
-	float: right;
 }
 
 .sl-listbox input.form-check-input {
@@ -104,7 +99,27 @@
 	margin-left: 0.25rem !important;
 }
 .sl-listbox .drag-icon {
+	float: right;
 	margin-left: 0.5rem !important;
+	cursor: move;
+	cursor: grab;
+	cursor: -moz-grab;
+	cursor: -webkit-grab;
+}
+
+.sl-listbox label.ui-sortable-helper, .sl-listbox label.ui-sortable-helper .drag-icon, .sl-listbox .drag-icon:active {
+	cursor: grabbing;
+	cursor: -moz-grabbing;
+	cursor: -webkit-grabbing;
+}
+
+.sl-listbox .drag-icon::before{
+	content: "";
+	display: inline-block;
+	width: 0.75rem;
+	height: 0.75rem;
+	background-color: CanvasText;
+	clip-path: polygon(50% 0%, 100% 40%, 50.05% 40%, 50.05% 60%, 100% 60%, 50% 100%, 0% 60%, 49.95% 60%, 49.95% 40%, 0% 40%);
 }
 
 .sl-listbox label.ui-state-active {

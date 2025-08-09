@@ -130,9 +130,20 @@
 
 		$('#btn-change').on("click", function(e) {
 			e.preventDefault();
-			$(this).prop('disabled', true);
-			$('#user_listbox').listbox('option', {isSortByDataProp: false, autoSort: true});
-			$('#user_listbox').listbox('add', {val: bella.id, text: bella.name, data: bella});
+
+			let is_autosort = $('#user_listbox').listbox('option', 'autoSort');
+
+			if (!$('#user_listbox').listbox('hasItem',  bella.id)) {
+				$('#user_listbox').listbox('option', {isSortByDataProp: false, autoSort: !is_autosort});
+				$('#user_listbox').listbox('add', {val: bella.id, text: bella.name, data: bella});
+			} else {
+				$('#user_listbox').listbox('option', 'autoSort', !is_autosort);
+			}
+			if (is_autosort) {
+				$(this).text('Change to auto');
+			} else {
+				$(this).text('Change to manual');
+			}
 		});
 	});
 	//--></script>

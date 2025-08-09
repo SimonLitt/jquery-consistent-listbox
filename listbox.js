@@ -1,7 +1,7 @@
 /*!
  * jquery-consistent-listbox v0.1 (https://github.com/SimonLitt/jquery-consistent-listbox/)
  * Copyright 2025 Simon Litt.
- * Licensed under MIT (https://github.com/SimonLitt/jquery-consistent-listbox/blob/main/LICENSE)
+ * @license Licensed under MIT (https://github.com/SimonLitt/jquery-consistent-listbox/blob/main/LICENSE)
  */
 (function( $ ) {
 	$.widget( "simonlitt.listbox", {
@@ -95,8 +95,23 @@
 			});
 		},
 
+		_sortable_html: function() {
+			return '<i class="drag-icon"></i>';
+		},
+
+		_switch_to_unsortable: function() {
+			this.element.sortable('destroy');
+			this.element.find('label.ui-menu-item > i.drag-icon').remove();
+
+		},
+
+		_switch_to_sortable: function() {
+			this.element.find('label.ui-menu-item').append(this._sortable_html());
+			this._set_sortable();
+		},
+
 		_item_html:  function(text, value, html_class, is_checked) {
-			return '<label class="ui-menu-item ui-menu-item-wrapper ui-corner-all' + (is_checked ? ' ui-state-active' : '') + (html_class ? (' ' + html_class) : '') + '" title="' + text + '"><input type="' + (this.options.multiSelect ? 'checkbox' : 'radio') + '"' + (this.options.name ? (' name="' + this.options.name + '"') : 'lb_name')+ ' class="form-check-input" value="' + value + '"' + (is_checked ? ' checked="checked"' : '') + '/><span class="item-text">' + text + '</span>' + ((this.options.sortable && !this.options.autoSort) ? '<i class="fas fa-sort drag-icon"></i>' : '') + '</label>';
+			return '<label class="ui-menu-item ui-menu-item-wrapper ui-corner-all' + (is_checked ? ' ui-state-active' : '') + (html_class ? (' ' + html_class) : '') + '" title="' + text + '"><input type="' + (this.options.multiSelect ? 'checkbox' : 'radio') + '"' + (this.options.name ? (' name="' + this.options.name + '"') : 'lb_name')+ ' class="form-check-input" value="' + value + '"' + (is_checked ? ' checked="checked"' : '') + '/><span class="item-text">' + text + '</span>' + ((this.options.sortable && !this.options.autoSort) ? this._sortable_html() : '') + '</label>';
 		},
 
 		/**
@@ -748,23 +763,23 @@
 				case 'sortable':
 					if (value) {
 						if (!this.options.sortable && !this.options.autoSort) {
-							this._set_sortable();
+							this._switch_to_sortable();
 						}
 					} else {
 						if (this.options.sortable && !this.options.autoSort) {
-							this.element.sortable('destroy');
+							this._switch_to_unsortable();
 						}
 					}
 					break;
 				case 'autoSort':
 					if (value) {
 						if (this.options.sortable && !this.options.autoSort) {
-							this.element.sortable('destroy');
+							this._switch_to_unsortable();
 						}
 						is_resort = true;
 					} else {
 						if (this.options.sortable && this.options.autoSort) {
-							this._set_sortable();
+							this._switch_to_sortable();
 						}
 					}
 					break;
