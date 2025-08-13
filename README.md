@@ -70,9 +70,11 @@ For the multiselect listbox, you need to specify the `multiSelect` option. If th
 
 ### Options
 
-`multiSelect`	Type:boolean	This is a multiselect listbox, otherwise it is a singleselect listbox. Default false.
+`items` _Type:array_ The initial array of item objects to populate the listbox. Used for initialization only. 
 
-`name`	_Type:sting_	The HTML `name` attribute identifier. Mandatory when there is more than one listbox on one page. Default is empty string, which means use `lb_name<uuid>` string.
+`multiSelect`	_Type:boolean_	This is a multiselect listbox, otherwise it is a singleselect listbox. Default false.
+
+`name`	_Type:sting_	The HTML `name` attribute identifier. Default is empty string, which means use `lb_name<uuid>` string. Mandatory different names when there is more than one listbox on one page, otherwise there will be display and functionality issues! 
 
 `quiet`	_Type:boolean_	Disable call `onChange`. Default false.
 
