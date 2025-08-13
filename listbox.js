@@ -46,10 +46,6 @@
 			}
 			this.element.addClass('ui-menu').addClass('ui-widget').addClass('ui-widget-content').addClass('ui-corner-all');
 
-			if (this.options.sortable && !this.options.autoSort) {
-				this.element.addClass('lb-sortable');
-			}
-
 			this.element.delegate('input', 'change', $.proxy( this._itemChange, null, this));
 			this.element.delegate('input', 'click', $.proxy( this._itemClick, null, this));
 			if (this.options.sortable) {
@@ -81,6 +77,7 @@
 		},
 
 		_set_sortable: function() {
+			this.element.addClass('lb-sortable');
 			let that = this;
 			this.element.sortable({
 				change: function(e, ui) {
@@ -103,6 +100,7 @@
 		_switch_to_unsortable: function() {
 			this.element.sortable('destroy');
 			this.element.find('label.ui-menu-item > i.drag-icon').remove();
+			this.element.removeClass('lb-sortable');
 
 		},
 
