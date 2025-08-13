@@ -70,6 +70,7 @@ if [ $(git tag -l "$version") ]; then
 	mkdir -p "${build_files}examples/" || die
 	mkdir -p  "${temp_file}" || die
 	git ls-tree "${version}:examples/" -r --name-only | while read line ; do echo "  extract: $line..."; git show "${version}:examples/$line" > "${temp_file}_tmp" || die ; install -D "${temp_file}_tmp" "${build_files}examples/$line" ; done
+	find "${build_files}examples/" -name '*.html'  -type f -print0 | xargs -0 sed -i 's/..\/upload\/listbox/..\/listbox/g' || die
 
     rm -f -r "${temp_file}"
 
