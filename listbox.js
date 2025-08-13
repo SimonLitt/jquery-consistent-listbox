@@ -1,5 +1,5 @@
 /*! @preserve
- * jquery-consistent-listbox v0.1.1 (https://github.com/SimonLitt/jquery-consistent-listbox/)
+ * jquery-consistent-listbox v0.1.2-dev (https://github.com/SimonLitt/jquery-consistent-listbox/)
  * Copyright 2025 Simon Litt.
  * @license Licensed under MIT (https://github.com/SimonLitt/jquery-consistent-listbox/blob/main/LICENSE)
  */
