@@ -42,6 +42,87 @@
 
 
 
+    <section>
+        <article><h1>jquery-consistent-listbox</h1>
+<p>jQuery UI singleselect and multiselect listbox plugin. The plugin designed to display consistently and correctly on both mobile devices and desktops. The plugin can be used inside of html forms.</p>
+<img width="228" height="356" alt="slb" src="https://github.com/user-attachments/assets/d584878e-797b-4ff0-bef4-dc36f0698532" />
+<img width="224" height="356" alt="mlb" src="https://github.com/user-attachments/assets/ae975266-4364-42a6-a452-56ff14627335" />
+<h1>Usage</h1>
+<p>Link jQuery and jQuery UI and the listbox:</p>
+<pre class="prettyprint source lang-HTML"><code>
+		&lt;!-- make sure it is included  jQuery and jQuery UI -->
+		&lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot; type=&quot;text/javascript&quot; integrity=&quot;sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=&quot; crossorigin=&quot;anonymous&quot; referrerpolicy=&quot;no-referrer&quot;>&lt;/script>
+		&lt;script src=&quot;https://code.jquery.com/ui/1.14.1/jquery-ui.min.js&quot; type=&quot;text/javascript&quot; integrity=&quot;sha256-AlTido85uXPlSyyaZNsjJXeCs07eSv3r43kyCVc8ChI=&quot; crossorigin=&quot;anonymous&quot; referrerpolicy=&quot;no-referrer&quot;>&lt;/script>
+		&lt;link href=&quot;https://code.jquery.com/ui/1.14.1/themes/cupertino/jquery-ui.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;screen&quot;  integrity=&quot;sha256-1Lhp59o6Lo17agNDv7pxRJSu6j1iExUKwHp/P2I19hQ=&quot; crossorigin=&quot;anonymous&quot; referrerpolicy=&quot;no-referrer&quot;/>
+
+		&lt;!-- include the plugin and default stylesheet -->
+		&lt;script src=&quot;javascript/simonlitt/listbox.min.js&quot; type=&quot;text/javascript&quot;>&lt;/script>
+		&lt;link href=&quot;javascript/simonlitt/listbox.min.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot;/>
+</code></pre>
+<p>Place the listbox container:</p>
+<pre class="prettyprint source lang-HTML"><code>
+&lt;div id=&quot;user_listbox&quot; class=&quot;sl-listbox sl-h-20&quot;>&lt;/div>
+</code></pre>
+<h3>Initialization</h3>
+<p>Create listbox object:</p>
+<pre class="prettyprint source lang-HTML"><code>&lt;script>&lt;!--
+	$( function() {
+		$('#user_listbox').listbox({
+			items: [
+				{val: '1', text: 'Item 1'},
+				{val: '2', text: 'Item 2'},
+				{val: '3', text: 'Item 3', checked: true},
+				{val: '4', text: 'Item 4'},
+				{val: '5', text: 'Item 5'},
+			],
+			onChange: function(e, val) {
+				console.log(val.old, val.cur);
+			}
+		});
+	});
+	//-->&lt;/script>
+</code></pre>
+<p>For the multiselect listbox, you need to specify the <code>multiSelect</code> option. If there is more than one listbox of any type on one page, then a unique <code>name</code> option should be specified for each one:</p>
+<pre class="prettyprint source lang-HTML"><code>&lt;div id=&quot;user_multilistbox&quot; class=&quot;sl-listbox sl-h-20&quot;>&lt;/div>
+&lt;script>&lt;!--
+	$( function() {
+		$('#user_multilistbox').listbox({
+			multiSelect: true,
+			name: 'selected_name', // The HTML `name` attribute identifier. Mandatory different names when there is more than one listbox on one page.
+			items: [
+				{val: '1', text: 'Item 1', checked: true},
+				{val: '2', text: 'Item 2', checked: true},
+				{val: '3', text: 'Item 3'},
+				{val: '4', text: 'Item 4', checked: true},
+				{val: '5', text: 'Item 5'},
+			],
+			onChange: function(e, val) {
+				console.log(val.old, val.cur);
+			}
+		});
+	});
+	//-->&lt;/script>
+</code></pre>
+<h3>Options</h3>
+<p><code>multiSelect</code>	Type:boolean	This is a multiselect listbox, otherwise it is a singleselect listbox. Default false.</p>
+<p><code>name</code>	<em>Type:sting</em>	The HTML <code>name</code> attribute identifier. Mandatory when there is more than one listbox on one page. Default is empty string, which means use <code>lb_name&lt;uuid&gt;</code> string.</p>
+<p><code>quiet</code>	<em>Type:boolean</em>	Disable call <code>onChange</code>. Default false.</p>
+<p><code>autoSort</code>	<em>Type:boolean</em>	Enable auto sorting. Default false.</p>
+<p><code>sortOrder</code>	<em>Type:string</em>	Sort data key. Default null.</p>
+<p><code>isSortByDataProp</code> 	<em>Type:boolean</em> 	Determines whether sorting will be done by <code>sort_order</code> property of the related data. Default null, what does sort by item text mean. If true, then sort by <code>sort_order</code> property of the related data. If false, then sort by value.</p>
+<p><code>sortable</code>	<em>Type:boolean</em>	Allowed to sort manually by dragging items. Default false. Warning: The jQuery UI library does not support the use of touch events in its widgets and interactions. To achieve correct operation, connect jQuery UI Touch Punch: <a href="https://github.com/RWAP/jquery-ui-touch-punch">RWAP Version</a>, <a href="https://github.com/furf/jquery-ui-touch-punch">Original repo (old)</a>.</p>
+<p><code>sortOrderStep</code>	<em>Type:number</em>	<code>sort_order</code> data key increment step for auto sorting. Default 10.</p>
+<h3>Methods</h3>
+<p>See the plugin <a href="https://github.com/SimonLitt/jquery-consistent-listbox/wiki/Plugin-methods">wiki</a>.</p>
+<p>For more detailed information, please refer to the <a href="https://github.com/SimonLitt/jquery-consistent-listbox/tree/main/docs">docs</a> directory.</p>
+<p>Additionally standard jQuery Widget Factory methods are available, such as <code>option</code>.</p>
+<h3>Events</h3>
+<p><strong>onChange( event, val )</strong></p>
+<p><strong>onClick( event, val )</strong></p>
+<h1>Example</h1>
+<p>Please refer to the <a href="https://github.com/SimonLitt/jquery-consistent-listbox/tree/main/examples">examples</a> directory.</p></article>
+    </section>
+
 
 
 
@@ -50,13 +131,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#clear">clear</a></li><li><a href="global.html#delete">delete</a></li><li><a href="global.html#getAllData">getAllData</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getDataVar">getDataVar</a></li><li><a href="global.html#getItem">getItem</a></li><li><a href="global.html#getItemData">getItemData</a></li><li><a href="global.html#getItemDataVar">getItemDataVar</a></li><li><a href="global.html#getItemIndex">getItemIndex</a></li><li><a href="global.html#getItemText">getItemText</a></li><li><a href="global.html#getSortOrder">getSortOrder</a></li><li><a href="global.html#getText">getText</a></li><li><a href="global.html#hasItem">hasItem</a></li><li><a href="global.html#hasSelected">hasSelected</a></li><li><a href="global.html#index">index</a></li><li><a href="global.html#insert">insert</a></li><li><a href="global.html#item">item</a></li><li><a href="global.html#items">items</a></li><li><a href="global.html#length">length</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#replace">replace</a></li><li><a href="global.html#replaceData">replaceData</a></li><li><a href="global.html#replaceItemData">replaceItemData</a></li><li><a href="global.html#select">select</a></li><li><a href="global.html#setDataVar">setDataVar</a></li><li><a href="global.html#setItemDataVar">setItemDataVar</a></li><li><a href="global.html#setItemText">setItemText</a></li><li><a href="global.html#setItemVal">setItemVal</a></li><li><a href="global.html#setSortOrder">setSortOrder</a></li><li><a href="global.html#setText">setText</a></li><li><a href="global.html#setVal">setVal</a></li><li><a href="global.html#sort">sort</a></li><li><a href="global.html#sortBy">sortBy</a></li><li><a href="global.html#unsetDataVar">unsetDataVar</a></li><li><a href="global.html#unsetItemDataVar">unsetItemDataVar</a></li><li><a href="global.html#updateData">updateData</a></li><li><a href="global.html#updateItemData">updateItemData</a></li><li><a href="global.html#val">val</a></li><li><a href="global.html#vals">vals</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="jquery-consistent-listbox.html">jquery-consistent-listbox</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed Aug 13 2025 21:07:16 GMT+0300 (Москва, стандартное время)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed Aug 13 2025 23:06:31 GMT+0300 (Москва, стандартное время)
 </footer>
 
 <script> prettyPrint(); </script>

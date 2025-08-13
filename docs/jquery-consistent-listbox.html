@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Global</title>
+    <title>JSDoc: Namespace: jquery-consistent-listbox</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Global</h1>
+    <h1 class="page-title">Namespace: jquery-consistent-listbox</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2></h2>
+        <h2>jquery-consistent-listbox</h2>
         
     
 </header>
@@ -36,6 +36,8 @@
 <article>
     <div class="container-overview">
     
+        
+            <div class="description">The jQuery UI singleselect and multiselect listbox plugin.</div>
         
 
         
@@ -68,6 +70,11 @@
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line7">line 7</a>
+    </li></ul></dd>
+    
 
     
 
@@ -93,6 +100,658 @@
 
     
 
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="autoSort"><span class="type-signature"></span>autoSort<span class="type-signature"> :boolean</span></h4>
+
+
+
+
+<div class="description">
+    Enable auto sorting. Default false.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line47">line 47</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="isSortByDataProp"><span class="type-signature"></span>isSortByDataProp<span class="type-signature"> :boolean</span></h4>
+
+
+
+
+<div class="description">
+    Determines whether sorting will be done by `sort_order` property of the related data. Default null, what does sort by item text mean. If true, then sort by `sort_order` property of the related data. If false, then sort by value.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line59">line 59</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="items"><span class="type-signature"></span>items<span class="type-signature"> :Array.&lt;lb_item></span></h4>
+
+
+
+
+<div class="description">
+    The initial array of item objects to populate the listbox. Used for initialization only.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;lb_item></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="multiSelect"><span class="type-signature"></span>multiSelect<span class="type-signature"> :sting</span></h4>
+
+
+
+
+<div class="description">
+    This is a multiselect listbox, otherwise it is a singleselect listbox. Default false.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">sting</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line29">line 29</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="name"><span class="type-signature"></span>name<span class="type-signature"> :boolean</span></h4>
+
+
+
+
+<div class="description">
+    The HTML `name` attribute identifier. Default `lb_name&lt;uuid>`. Note: When there is more than one listbox with the same name on one page, there will be display and functionality issues!
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line35">line 35</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="quiet"><span class="type-signature"></span>quiet<span class="type-signature"> :boolean</span></h4>
+
+
+
+
+<div class="description">
+    Disable call `onChange`. Default false.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line41">line 41</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="sortOrder"><span class="type-signature"></span>sortOrder<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Sort data key. Default null.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line53">line 53</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="sortOrderStep"><span class="type-signature"></span>sortOrderStep<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    `sort_order` data key increment step for auto sorting. Default 10.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line71">line 71</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="sortable"><span class="type-signature"></span>sortable<span class="type-signature"> :boolean</span></h4>
+
+
+
+
+<div class="description">
+    Allowed to sort manually by dragging items. Default false.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line65">line 65</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
     
 
     
@@ -158,7 +817,7 @@
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#lb_item">lb_item</a></span>
+<span class="param-type">lb_item</span>
 
 
             
@@ -299,7 +958,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line192">line 192</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line225">line 225</a>
     </li></ul></dd>
     
 
@@ -495,7 +1154,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line276">line 276</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line314">line 314</a>
     </li></ul></dd>
     
 
@@ -540,7 +1199,7 @@
 
 <div class="description">
     Deletes the specified item.
-See also: <a href="global.html#remove">remove</a>.
+See also: <a href="jquery-consistent-listbox.html#remove">remove()</a>.
 </div>
 
 
@@ -727,7 +1386,7 @@ See also: <a href="global.html#remove">remove</a>.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line249">line 249</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line283">line 283</a>
     </li></ul></dd>
     
 
@@ -984,7 +1643,7 @@ See also: <a href="global.html#remove">remove</a>.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line459">line 459</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line511">line 511</a>
     </li></ul></dd>
     
 
@@ -1054,7 +1713,7 @@ See also: <a href="global.html#remove">remove</a>.
 
 <div class="description">
     Gets selected item assigned data.
-See also: <a href="global.html#getItemData">getItemData</a>, <a href="global.html#updateData">updateData</a>, <a href="global.html#replaceData">replaceData</a>.
+See also: <a href="jquery-consistent-listbox.html#getItemData">getItemData()</a>, <a href="jquery-consistent-listbox.html#updateData">updateData()</a>, <a href="jquery-consistent-listbox.html#replaceData">replaceData()</a>.
 </div>
 
 
@@ -1098,7 +1757,7 @@ See also: <a href="global.html#getItemData">getItemData</a>, <a href="global.htm
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line542">line 542</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line606">line 606</a>
     </li></ul></dd>
     
 
@@ -1165,7 +1824,7 @@ See also: <a href="global.html#getItemData">getItemData</a>, <a href="global.htm
 
 <div class="description">
     Gets a user-defined data property by key.
-See also: <a href="global.html#getItemDataVar">getItemDataVar</a>, <a href="global.html#unsetDataVar">unsetDataVar</a>, <a href="global.html#setDataVar">setDataVar</a>.
+See also: <a href="jquery-consistent-listbox.html#getItemDataVar">getItemDataVar()</a>, <a href="jquery-consistent-listbox.html#unsetDataVar">unsetDataVar()</a>, <a href="jquery-consistent-listbox.html#setDataVar">setDataVar()</a>.
 </div>
 
 
@@ -1258,7 +1917,7 @@ See also: <a href="global.html#getItemDataVar">getItemDataVar</a>, <a href="glob
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line694">line 694</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line775">line 775</a>
     </li></ul></dd>
     
 
@@ -1304,7 +1963,7 @@ See also: <a href="global.html#getItemDataVar">getItemDataVar</a>, <a href="glob
     
 
     
-    <h4 class="name" id="getItem"><span class="type-signature"></span>getItem<span class="signature">(value, is_with_data<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="global.html#lb_item">lb_item</a>}</span></h4>
+    <h4 class="name" id="getItem"><span class="type-signature"></span>getItem<span class="signature">(value, is_with_data<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {lb_item}</span></h4>
     
 
     
@@ -1460,7 +2119,7 @@ See also: <a href="global.html#getItemDataVar">getItemDataVar</a>, <a href="glob
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line530">line 530</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line591">line 591</a>
     </li></ul></dd>
     
 
@@ -1500,7 +2159,7 @@ See also: <a href="global.html#getItemDataVar">getItemDataVar</a>, <a href="glob
     </dt>
     <dd>
         
-<span class="param-type"><a href="global.html#lb_item">lb_item</a></span>
+<span class="param-type">lb_item</span>
 
 
     </dd>
@@ -1527,7 +2186,7 @@ See also: <a href="global.html#getItemDataVar">getItemDataVar</a>, <a href="glob
 
 <div class="description">
     Gets item assigned data by an item value.
-See also: <a href="global.html#updateItemData">updateItemData</a>, <a href="global.html#replaceItemData">replaceItemData</a>, <a href="global.html#getData">getData</a>.
+See also: <a href="jquery-consistent-listbox.html#updateItemData">updateItemData()</a>, <a href="jquery-consistent-listbox.html#replaceItemData">replaceItemData()</a>, <a href="jquery-consistent-listbox.html#getData">getData()</a>.
 </div>
 
 
@@ -1620,7 +2279,7 @@ See also: <a href="global.html#updateItemData">updateItemData</a>, <a href="glob
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line574">line 574</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line643">line 643</a>
     </li></ul></dd>
     
 
@@ -1687,7 +2346,7 @@ See also: <a href="global.html#updateItemData">updateItemData</a>, <a href="glob
 
 <div class="description">
     Gets user-defined data property by item value and property key.
-See also: <a href="global.html#getDataVar">getDataVar</a>, <a href="global.html#setItemDataVar">setItemDataVar</a>, <a href="global.html#setItemDataVar">setItemDataVar</a>.
+See also: <a href="jquery-consistent-listbox.html#getDataVar">getDataVar()</a>, <a href="jquery-consistent-listbox.html#setItemDataVar">setItemDataVar()</a>, <a href="jquery-consistent-listbox.html#setItemDataVar">setItemDataVar()</a>.
 </div>
 
 
@@ -1803,7 +2462,7 @@ See also: <a href="global.html#getDataVar">getDataVar</a>, <a href="global.html#
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line724">line 724</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line810">line 810</a>
     </li></ul></dd>
     
 
@@ -1858,7 +2517,7 @@ See also: <a href="global.html#getDataVar">getDataVar</a>, <a href="global.html#
 
 <div class="description">
     Gets an item index by value.
-See also: <a href="global.html#index">index</a>.
+See also: <a href="jquery-consistent-listbox.html#index">index()</a>.
 </div>
 
 
@@ -1951,7 +2610,7 @@ See also: <a href="global.html#index">index</a>.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line136">line 136</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line168">line 168</a>
     </li></ul></dd>
     
 
@@ -2018,7 +2677,7 @@ See also: <a href="global.html#index">index</a>.
 
 <div class="description">
     Gets item text by value.
-See also: <a href="global.html#getText">getText</a>, <a href="global.html#setItemText">setItemText</a>.
+See also: <a href="jquery-consistent-listbox.html#getText">getText()</a>, <a href="jquery-consistent-listbox.html#setItemText">setItemText()</a>.
 </div>
 
 
@@ -2111,7 +2770,7 @@ See also: <a href="global.html#getText">getText</a>, <a href="global.html#setIte
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line437">line 437</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line487">line 487</a>
     </li></ul></dd>
     
 
@@ -2178,7 +2837,7 @@ See also: <a href="global.html#getText">getText</a>, <a href="global.html#setIte
 
 <div class="description">
     Returns `sort_order` property of the related data.
-See also: <a href="global.html#setSortOrder">setSortOrder</a>.
+See also: <a href="jquery-consistent-listbox.html#setSortOrder">setSortOrder()</a>.
 </div>
 
 
@@ -2222,7 +2881,7 @@ See also: <a href="global.html#setSortOrder">setSortOrder</a>.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line394">line 394</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line440">line 440</a>
     </li></ul></dd>
     
 
@@ -2289,7 +2948,7 @@ See also: <a href="global.html#setSortOrder">setSortOrder</a>.
 
 <div class="description">
     Gets selected item text.
-See also: <a href="global.html#getItemText">getItemText</a>, <a href="global.html#setText">setText</a>.
+See also: <a href="jquery-consistent-listbox.html#getItemText">getItemText()</a>, <a href="jquery-consistent-listbox.html#setText">setText()</a>.
 </div>
 
 
@@ -2333,7 +2992,7 @@ See also: <a href="global.html#getItemText">getItemText</a>, <a href="global.htm
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line417">line 417</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line465">line 465</a>
     </li></ul></dd>
     
 
@@ -2492,7 +3151,7 @@ See also: <a href="global.html#getItemText">getItemText</a>, <a href="global.htm
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line516">line 516</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line576">line 576</a>
     </li></ul></dd>
     
 
@@ -2602,7 +3261,7 @@ See also: <a href="global.html#getItemText">getItemText</a>, <a href="global.htm
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line329">line 329</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line372">line 372</a>
     </li></ul></dd>
     
 
@@ -2669,7 +3328,7 @@ See also: <a href="global.html#getItemText">getItemText</a>, <a href="global.htm
 
 <div class="description">
     Gets the specified item index.
-See also: <a href="global.html#getItemIndex">getItemIndex</a>.
+See also: <a href="jquery-consistent-listbox.html#getItemIndex">getItemIndex()</a>.
 </div>
 
 
@@ -2713,7 +3372,7 @@ See also: <a href="global.html#getItemIndex">getItemIndex</a>.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line125">line 125</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line157">line 157</a>
     </li></ul></dd>
     
 
@@ -2860,7 +3519,7 @@ See also: <a href="global.html#getItemIndex">getItemIndex</a>.
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#lb_item">lb_item</a></span>
+<span class="param-type">lb_item</span>
 
 
             
@@ -3001,7 +3660,7 @@ See also: <a href="global.html#getItemIndex">getItemIndex</a>.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line209">line 209</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line242">line 242</a>
     </li></ul></dd>
     
 
@@ -3037,7 +3696,7 @@ See also: <a href="global.html#getItemIndex">getItemIndex</a>.
     
 
     
-    <h4 class="name" id="item"><span class="type-signature"></span>item<span class="signature">(is_with_data<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="global.html#lb_item">lb_item</a>}</span></h4>
+    <h4 class="name" id="item"><span class="type-signature"></span>item<span class="signature">(is_with_data<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {lb_item}</span></h4>
     
 
     
@@ -3046,7 +3705,7 @@ See also: <a href="global.html#getItemIndex">getItemIndex</a>.
 
 <div class="description">
     Gets selected item object.
-See also: <a href="global.html#items">items</a>.
+See also: <a href="jquery-consistent-listbox.html#items">items()</a>.
 </div>
 
 
@@ -3159,7 +3818,7 @@ See also: <a href="global.html#items">items</a>.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line492">line 492</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line547">line 547</a>
     </li></ul></dd>
     
 
@@ -3199,7 +3858,7 @@ See also: <a href="global.html#items">items</a>.
     </dt>
     <dd>
         
-<span class="param-type"><a href="global.html#lb_item">lb_item</a></span>
+<span class="param-type">lb_item</span>
 
 
     </dd>
@@ -3226,7 +3885,7 @@ See also: <a href="global.html#items">items</a>.
 
 <div class="description">
     Gets list of selected items.
-See also: <a href="global.html#item">item</a>.
+See also: <a href="jquery-consistent-listbox.html#item">item()</a>.
 </div>
 
 
@@ -3339,7 +3998,7 @@ See also: <a href="global.html#item">item</a>.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line502">line 502</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line559">line 559</a>
     </li></ul></dd>
     
 
@@ -3449,7 +4108,7 @@ See also: <a href="global.html#item">item</a>.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line310">line 310</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line351">line 351</a>
     </li></ul></dd>
     
 
@@ -3516,7 +4175,7 @@ See also: <a href="global.html#item">item</a>.
 
 <div class="description">
     Removes the selected items.
-See also: <a href="global.html#delete">delete</a>.
+See also: <a href="jquery-consistent-listbox.html#delete">delete()</a>.
 </div>
 
 
@@ -3668,7 +4327,7 @@ See also: <a href="global.html#delete">delete</a>.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line226">line 226</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line260">line 260</a>
     </li></ul></dd>
     
 
@@ -3886,7 +4545,7 @@ See also: <a href="global.html#delete">delete</a>.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line299">line 299</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line338">line 338</a>
     </li></ul></dd>
     
 
@@ -3931,7 +4590,7 @@ See also: <a href="global.html#delete">delete</a>.
 
 <div class="description">
     Replaces the user-defined data with a new object.
-See also: <a href="global.html#replaceItemData">replaceItemData</a>, <a href="global.html#getData">getData</a>, <a href="global.html#updateData">updateData</a>.
+See also: <a href="jquery-consistent-listbox.html#replaceItemData">replaceItemData()</a>, <a href="jquery-consistent-listbox.html#getData">getData()</a>, <a href="jquery-consistent-listbox.html#updateData">updateData()</a>.
 </div>
 
 
@@ -4118,7 +4777,7 @@ See also: <a href="global.html#replaceItemData">replaceItemData</a>, <a href="gl
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line564">line 564</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line630">line 630</a>
     </li></ul></dd>
     
 
@@ -4163,7 +4822,7 @@ See also: <a href="global.html#replaceItemData">replaceItemData</a>, <a href="gl
 
 <div class="description">
     Replaces the user-defined data with a new object by item value.
-See also: <a href="global.html#getItemData">getItemData</a>, <a href="global.html#updateItemData">updateItemData</a>, <a href="global.html#replaceData">replaceData</a>.
+See also: <a href="jquery-consistent-listbox.html#getItemData">getItemData()</a>, <a href="jquery-consistent-listbox.html#updateItemData">updateItemData()</a>, <a href="jquery-consistent-listbox.html#replaceData">replaceData()</a>.
 </div>
 
 
@@ -4385,7 +5044,7 @@ See also: <a href="global.html#getItemData">getItemData</a>, <a href="global.htm
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line617">line 617</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line688">line 688</a>
     </li></ul></dd>
     
 
@@ -4619,7 +5278,7 @@ See also: <a href="global.html#getItemData">getItemData</a>, <a href="global.htm
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line639">line 639</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line714">line 714</a>
     </li></ul></dd>
     
 
@@ -4664,7 +5323,7 @@ See also: <a href="global.html#getItemData">getItemData</a>, <a href="global.htm
 
 <div class="description">
     Sets a user-defined data property by key.
-See also: <a href="global.html#setItemDataVar">setItemDataVar</a>, <a href="global.html#unsetDataVar">unsetDataVar</a>, <a href="global.html#getDataVar">getDataVar</a>.
+See also: <a href="jquery-consistent-listbox.html#setItemDataVar">setItemDataVar()</a>, <a href="jquery-consistent-listbox.html#unsetDataVar">unsetDataVar()</a>, <a href="jquery-consistent-listbox.html#getDataVar">getDataVar()</a>.
 </div>
 
 
@@ -4780,7 +5439,7 @@ See also: <a href="global.html#setItemDataVar">setItemDataVar</a>, <a href="glob
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line704">line 704</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line787">line 787</a>
     </li></ul></dd>
     
 
@@ -4825,7 +5484,7 @@ See also: <a href="global.html#setItemDataVar">setItemDataVar</a>, <a href="glob
 
 <div class="description">
     Sets user-defined data property by item value and property key.
-See also: <a href="global.html#setDataVar">setDataVar</a>, <a href="global.html#unsetItemDataVar">unsetItemDataVar</a>, <a href="global.html#getItemDataVar">getItemDataVar</a>.
+See also: <a href="jquery-consistent-listbox.html#setDataVar">setDataVar()</a>, <a href="jquery-consistent-listbox.html#unsetItemDataVar">unsetItemDataVar()</a>, <a href="jquery-consistent-listbox.html#getItemDataVar">getItemDataVar()</a>.
 </div>
 
 
@@ -4964,7 +5623,7 @@ See also: <a href="global.html#setDataVar">setDataVar</a>, <a href="global.html#
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line746">line 746</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line834">line 834</a>
     </li></ul></dd>
     
 
@@ -5009,7 +5668,7 @@ See also: <a href="global.html#setDataVar">setDataVar</a>, <a href="global.html#
 
 <div class="description">
     Sets item text by value.
-See also: <a href="global.html#setText">setText</a>, <a href="global.html#getItemText">getItemText</a>.
+See also: <a href="jquery-consistent-listbox.html#setText">setText()</a>, <a href="jquery-consistent-listbox.html#getItemText">getItemText()</a>.
 </div>
 
 
@@ -5125,7 +5784,7 @@ See also: <a href="global.html#setText">setText</a>, <a href="global.html#getIte
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line448">line 448</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line499">line 499</a>
     </li></ul></dd>
     
 
@@ -5170,7 +5829,7 @@ See also: <a href="global.html#setText">setText</a>, <a href="global.html#getIte
 
 <div class="description">
     Replaces item value by item value.
-See also: <a href="global.html#setVal">setVal</a>.
+See also: <a href="jquery-consistent-listbox.html#setVal">setVal()</a>.
 </div>
 
 
@@ -5392,7 +6051,7 @@ See also: <a href="global.html#setVal">setVal</a>.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line676">line 676</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line753">line 753</a>
     </li></ul></dd>
     
 
@@ -5437,7 +6096,7 @@ See also: <a href="global.html#setVal">setVal</a>.
 
 <div class="description">
     Sets `sort_order` property of the related data.
-See also: <a href="global.html#getSortOrder">getSortOrder</a>.
+See also: <a href="jquery-consistent-listbox.html#getSortOrder">getSortOrder()</a>.
 </div>
 
 
@@ -5530,7 +6189,7 @@ See also: <a href="global.html#getSortOrder">getSortOrder</a>.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line404">line 404</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line451">line 451</a>
     </li></ul></dd>
     
 
@@ -5575,7 +6234,7 @@ See also: <a href="global.html#getSortOrder">getSortOrder</a>.
 
 <div class="description">
     Sets selected item text.
-See also: <a href="global.html#setItemText">setItemText</a>, <a href="global.html#getText">getText</a>.
+See also: <a href="jquery-consistent-listbox.html#setItemText">setItemText()</a>, <a href="jquery-consistent-listbox.html#getText">getText()</a>.
 </div>
 
 
@@ -5668,7 +6327,7 @@ See also: <a href="global.html#setItemText">setItemText</a>, <a href="global.htm
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line426">line 426</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line476">line 476</a>
     </li></ul></dd>
     
 
@@ -5713,7 +6372,7 @@ See also: <a href="global.html#setItemText">setItemText</a>, <a href="global.htm
 
 <div class="description">
     Replaces selected item value.
-See also: <a href="global.html#setItemVal">setItemVal</a>.
+See also: <a href="jquery-consistent-listbox.html#setItemVal">setItemVal()</a>.
 </div>
 
 
@@ -5900,7 +6559,7 @@ See also: <a href="global.html#setItemVal">setItemVal</a>.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line664">line 664</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line740">line 740</a>
     </li></ul></dd>
     
 
@@ -5945,7 +6604,7 @@ See also: <a href="global.html#setItemVal">setItemVal</a>.
 
 <div class="description">
     Sorts items.
-See also: <a href="global.html#sortBy">sortBy</a>.
+See also: <a href="jquery-consistent-listbox.html#sortBy">sortBy()</a>.
 </div>
 
 
@@ -5989,7 +6648,7 @@ See also: <a href="global.html#sortBy">sortBy</a>.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line351">line 351</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line396">line 396</a>
     </li></ul></dd>
     
 
@@ -6034,7 +6693,7 @@ See also: <a href="global.html#sortBy">sortBy</a>.
 
 <div class="description">
     Sorts items.
-See also: <a href="global.html#sort">sort</a>.
+See also: <a href="jquery-consistent-listbox.html#sort">sort()</a>.
 </div>
 
 
@@ -6147,7 +6806,7 @@ See also: <a href="global.html#sort">sort</a>.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line361">line 361</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line406">line 406</a>
     </li></ul></dd>
     
 
@@ -6192,7 +6851,7 @@ See also: <a href="global.html#sort">sort</a>.
 
 <div class="description">
     Unsets a user-defined data property property by key.
-See also: <a href="global.html#getItemDataVar">getItemDataVar</a>, <a href="global.html#setDataVar">setDataVar</a>, <a href="global.html#setDataVar">setDataVar</a>.
+See also: <a href="jquery-consistent-listbox.html#getItemDataVar">getItemDataVar()</a>, <a href="jquery-consistent-listbox.html#setDataVar">setDataVar()</a>, <a href="jquery-consistent-listbox.html#setDataVar">setDataVar()</a>.
 </div>
 
 
@@ -6285,7 +6944,7 @@ See also: <a href="global.html#getItemDataVar">getItemDataVar</a>, <a href="glob
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line713">line 713</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line799">line 799</a>
     </li></ul></dd>
     
 
@@ -6330,7 +6989,7 @@ See also: <a href="global.html#getItemDataVar">getItemDataVar</a>, <a href="glob
 
 <div class="description">
     Unsets a user-defined data property property by item value and property key.
-See also: <a href="global.html#getDataVar">getDataVar</a>, <a href="global.html#setItemDataVar">setItemDataVar</a>, <a href="global.html#setItemDataVar">setItemDataVar</a>.
+See also: <a href="jquery-consistent-listbox.html#getDataVar">getDataVar()</a>, <a href="jquery-consistent-listbox.html#setItemDataVar">setItemDataVar()</a>, <a href="jquery-consistent-listbox.html#setItemDataVar">setItemDataVar()</a>.
 </div>
 
 
@@ -6446,7 +7105,7 @@ See also: <a href="global.html#getDataVar">getDataVar</a>, <a href="global.html#
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line762">line 762</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line853">line 853</a>
     </li></ul></dd>
     
 
@@ -6491,7 +7150,7 @@ See also: <a href="global.html#getDataVar">getDataVar</a>, <a href="global.html#
 
 <div class="description">
     Updates related user-defined data. All unaffected properties remain unchanged.
-See also: <a href="global.html#updateItemData">updateItemData</a>, <a href="global.html#getData">getData</a>, <a href="global.html#replaceData">replaceData</a>.
+See also: <a href="jquery-consistent-listbox.html#updateItemData">updateItemData()</a>, <a href="jquery-consistent-listbox.html#getData">getData()</a>, <a href="jquery-consistent-listbox.html#replaceData">replaceData()</a>.
 </div>
 
 
@@ -6678,7 +7337,7 @@ See also: <a href="global.html#updateItemData">updateItemData</a>, <a href="glob
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line553">line 553</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line617">line 617</a>
     </li></ul></dd>
     
 
@@ -6723,7 +7382,7 @@ See also: <a href="global.html#updateItemData">updateItemData</a>, <a href="glob
 
 <div class="description">
     Updates related user-defined data by item value. All unaffected properties remain unchanged.
-See also: <a href="global.html#getItemData">getItemData</a>, <a href="global.html#replaceItemData">replaceItemData</a>, <a href="global.html#updateData">updateData</a>.
+See also: <a href="jquery-consistent-listbox.html#getItemData">getItemData()</a>, <a href="jquery-consistent-listbox.html#replaceItemData">replaceItemData()</a>, <a href="jquery-consistent-listbox.html#updateData">updateData()</a>.
 </div>
 
 
@@ -6945,7 +7604,7 @@ See also: <a href="global.html#getItemData">getItemData</a>, <a href="global.htm
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line590">line 590</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line659">line 659</a>
     </li></ul></dd>
     
 
@@ -7033,7 +7692,7 @@ See also: <a href="global.html#getItemData">getItemData</a>, <a href="global.htm
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line319">line 319</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line361">line 361</a>
     </li></ul></dd>
     
 
@@ -7143,7 +7802,7 @@ See also: <a href="global.html#getItemData">getItemData</a>, <a href="global.htm
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line338">line 338</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line382">line 382</a>
     </li></ul></dd>
     
 
@@ -7397,288 +8056,7 @@ See also: <a href="global.html#getItemData">getItemData</a>, <a href="global.htm
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line8">line 8</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-            
-                
-<h4 class="name" id="lb_options">lb_options</h4>
-
-
-
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>multiSelect</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">This is a multiselect listbox, otherwise it is a singleselect listbox. Default false.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">sting</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The HTML `name` attribute identifier. Default `lb_name&lt;uuid>`. Note: When there is more than one listbox with the same name on one page, there will be display and functionality issues!</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>quiet</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Disable call `onChange`. Default false.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>autoSort</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Enable auto sorting. Default false.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>sortOrder</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Sort data key. Default null.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>isSortByDataProp</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Determines whether sorting will be done by `sort_order` property of the related data. Default null, what does sort by item text mean. If true, then sort by `sort_order` property of the related data. If false, then sort by value.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>sortable</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Allowed to sort manually by dragging items. Default false.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>sortOrderStep</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">`sort_order` data key increment step for auto sorting. Default 10.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line18">line 18</a>
+        <a href="listbox.js.html">listbox.js</a>, <a href="listbox.js.html#line12">line 12</a>
     </li></ul></dd>
     
 
@@ -7708,13 +8086,13 @@ See also: <a href="global.html#getItemData">getItemData</a>, <a href="global.htm
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#clear">clear</a></li><li><a href="global.html#delete">delete</a></li><li><a href="global.html#getAllData">getAllData</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getDataVar">getDataVar</a></li><li><a href="global.html#getItem">getItem</a></li><li><a href="global.html#getItemData">getItemData</a></li><li><a href="global.html#getItemDataVar">getItemDataVar</a></li><li><a href="global.html#getItemIndex">getItemIndex</a></li><li><a href="global.html#getItemText">getItemText</a></li><li><a href="global.html#getSortOrder">getSortOrder</a></li><li><a href="global.html#getText">getText</a></li><li><a href="global.html#hasItem">hasItem</a></li><li><a href="global.html#hasSelected">hasSelected</a></li><li><a href="global.html#index">index</a></li><li><a href="global.html#insert">insert</a></li><li><a href="global.html#item">item</a></li><li><a href="global.html#items">items</a></li><li><a href="global.html#length">length</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#replace">replace</a></li><li><a href="global.html#replaceData">replaceData</a></li><li><a href="global.html#replaceItemData">replaceItemData</a></li><li><a href="global.html#select">select</a></li><li><a href="global.html#setDataVar">setDataVar</a></li><li><a href="global.html#setItemDataVar">setItemDataVar</a></li><li><a href="global.html#setItemText">setItemText</a></li><li><a href="global.html#setItemVal">setItemVal</a></li><li><a href="global.html#setSortOrder">setSortOrder</a></li><li><a href="global.html#setText">setText</a></li><li><a href="global.html#setVal">setVal</a></li><li><a href="global.html#sort">sort</a></li><li><a href="global.html#sortBy">sortBy</a></li><li><a href="global.html#unsetDataVar">unsetDataVar</a></li><li><a href="global.html#unsetItemDataVar">unsetItemDataVar</a></li><li><a href="global.html#updateData">updateData</a></li><li><a href="global.html#updateItemData">updateItemData</a></li><li><a href="global.html#val">val</a></li><li><a href="global.html#vals">vals</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="jquery-consistent-listbox.html">jquery-consistent-listbox</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed Aug 13 2025 21:07:16 GMT+0300 (Москва, стандартное время)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed Aug 13 2025 23:06:31 GMT+0300 (Москва, стандартное время)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -4,37 +4,75 @@
  * @license Licensed under MIT (https://github.com/SimonLitt/jquery-consistent-listbox/blob/main/LICENSE)
  */
 (function( $ ) {
-	$.widget( "simonlitt.listbox", {
-		/**
-		 * @typedef lb_item
-		 * @type {Object}
-		 * @property {sting} val - Associated value. When used inside a HTML form, it will be passed in the request.
-		 * @property {sting} text - Display text.
-		 * @property {sting} class - Optional. Custom css class of the item.
-		 * @property {number} sort_order - Optional. Custom sort order.
-		 * @property {object} data - Optional. Related user-defined data. Automatic or manual sorting changes or creates the `sort_order` property.
-		 */
+	/**
+	 * The jQuery UI singleselect and multiselect listbox plugin.
+	 * @namespace jquery-consistent-listbox
+	 */
 
-		/**
-		* @typedef lb_options
-		* @type {Object}
-		* @property {boolean} multiSelect - This is a multiselect listbox, otherwise it is a singleselect listbox. Default false.
-		* @property {sting} name - The HTML `name` attribute identifier. Default `lb_name&lt;uuid>`. Note: When there is more than one listbox with the same name on one page, there will be display and functionality issues!
-		* @property {boolean} quiet - Disable call `onChange`. Default false.
-		* @property {boolean} autoSort - Enable auto sorting. Default false.
-		* @property {string} sortOrder - Sort data key. Default null.
-		* @property {boolean} isSortByDataProp - Determines whether sorting will be done by `sort_order` property of the related data. Default null, what does sort by item text mean. If true, then sort by `sort_order` property of the related data. If false, then sort by value.
-		* @property {boolean} sortable - Allowed to sort manually by dragging items. Default false.
-		* @property {number} sortOrderStep - `sort_order` data key increment step for auto sorting. Default 10.
-		*/
+	/**
+	 * @typedef  {Object} lb_item
+	 * @name jquery-consistent-listbox#lb_item
+	 * @property {sting} val - Associated value. When used inside a HTML form, it will be passed in the request.
+	 * @property {sting} text - Display text.
+	 * @property {sting} class - Optional. Custom css class of the item.
+	 * @property {number} sort_order - Optional. Custom sort order.
+	 * @property {object} data - Optional. Related user-defined data. Automatic or manual sorting changes or creates the `sort_order` property.
+	 */
+
+	$.widget( "simonlitt.jquery-consistent-listbox", {
 		options: {
+			/**
+			 * @name jquery-consistent-listbox#items
+			 * @type {lb_item[]}
+			 * @description The initial array of item objects to populate the listbox. Used for initialization only.
+			 */
+			/**
+			 * @name jquery-consistent-listbox#multiSelect
+			 * @type {sting}
+			 * @description This is a multiselect listbox, otherwise it is a singleselect listbox. Default false.
+			 */
 			multiSelect: false,
+			/**
+			 * @name jquery-consistent-listbox#name
+			 * @type {boolean}
+			 * @description The HTML `name` attribute identifier. Default `lb_name&lt;uuid>`. Note: When there is more than one listbox with the same name on one page, there will be display and functionality issues!
+			 */
 			name: '',
+			/**
+			 * @name jquery-consistent-listbox#quiet
+			 * @type {boolean}
+			 * @description Disable call `onChange`. Default false.
+			 */
 			quiet: false,
+			/**
+			 * @name jquery-consistent-listbox#autoSort
+			 * @type {boolean}
+			 * @description Enable auto sorting. Default false.
+			 */
 			autoSort: false,
+			/**
+			 * @name jquery-consistent-listbox#sortOrder
+			 * @type {string}
+			 * @description Sort data key. Default null.
+			 */
 			sortOrder: null,
+			/**
+			 * @name jquery-consistent-listbox#isSortByDataProp
+			 * @type {boolean}
+			 * @description Determines whether sorting will be done by `sort_order` property of the related data. Default null, what does sort by item text mean. If true, then sort by `sort_order` property of the related data. If false, then sort by value.
+			 */
 			isSortByDataProp: null,
+			/**
+			 * @name jquery-consistent-listbox#sortable
+			 * @type {boolean}
+			 * @description Allowed to sort manually by dragging items. Default false.
+			 */
 			sortable: false,
+			/**
+			 * @name jquery-consistent-listbox#sortOrderStep
+			 * @type {number}
+			 * @description `sort_order` data key increment step for auto sorting. Default 10.
+			 */
 			sortOrderStep: 10,
 		},
 
@@ -118,8 +156,9 @@
 
 		/**
 		 * Gets the specified item index.
-		 * See also: {@link getItemIndex}.
-		 *
+		 * See also: {@link jquery-consistent-listbox#getItemIndex|getItemIndex()}.
+		 * @name jquery-consistent-listbox#index
+		 * @function
 		 * @returns {boolean} The item index.
 		 */
 		index:  function() {
@@ -128,8 +167,9 @@
 
 		/**
 		 * Gets an item index by value.
-		 * See also: {@link index}.
-		 *
+		 * See also: {@link jquery-consistent-listbox#index|index()}.
+		 * @name jquery-consistent-listbox#getItemIndex
+		 * @function
 		 * @param {string} value - Item value.
 		 * @returns {number} The item index.
 		 */
@@ -184,7 +224,8 @@
 
 		/**
 		 * Adds a item.
-		 *
+		 * @name jquery-consistent-listbox#add
+		 * @function
 		 * @param {lb_item} item - Item data.
 		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
 		 * @param {object=} [e=null] - jQuery event or another data which will be transferred to `onChange`. Default null.
@@ -200,7 +241,8 @@
 
 		/**
 		 * Inserts a item into the specified position.
-		 *
+		 * @name jquery-consistent-listbox#insert
+		 * @function
 		 * @param {number} index - Insert position. `autoSort` option can change position after insetrtion.
 		 * @param {lb_item} item - Item data.
 		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
@@ -217,8 +259,9 @@
 
 		/**
 		 * Removes the selected items.
-		 * See also: {@link delete}.
-		 *
+		 * See also: {@link jquery-consistent-listbox#delete|delete()}.
+		 * @name jquery-consistent-listbox#remove
+		 * @function
 		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
 		 * @param {object=} [e=null] - jQuery event or another data which will be transferred to `onChange`. Default null.
 		 * @returns {boolean} Whether the selected items were found and removed.
@@ -239,8 +282,9 @@
 
 		/**
 		 * Deletes the specified item.
-		 * See also: {@link remove}.
-		 *
+		 * See also: {@link jquery-consistent-listbox#remove|remove()}.
+		 * @name jquery-consistent-listbox#delete
+		 * @function
 		 * @param {string} value - Item value.
 		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
 		 * @param {object=} [e=null] - jQuery event or another data which will be transferred to `onChange`. Default null.
@@ -269,7 +313,8 @@
 
 		/**
 		 * Deletes all items.
-		 *
+		 * @name jquery-consistent-listbox#clear
+		 * @function
 		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`.
 		 * @param {object=} [e=null] - jQuery event or another data which will be transferred to `onChange`.
 		 */
@@ -292,7 +337,8 @@
 
 		/**
 		 * Deletes all items and insert specified new items.
-		 *
+		 * @name jquery-consistent-listbox#replace
+		 * @function
 		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
 		 * @param {object=} [e=null] - jQuery event or another data which will be transferred to `onChange`. Default null.
 		 */
@@ -304,7 +350,8 @@
 
 		/**
 		 * Returns the number of items.
-		 *
+		 * @name jquery-consistent-listbox#length
+		 * @function
 		 * @returns {number} Number of elements.
 		 */
 		length: function() {
@@ -313,7 +360,8 @@
 
 		/**
 		 * Returns selected item value.
-		 *
+		 * @name jquery-consistent-listbox#val
+		 * @function
 		 * @returns {string} Selected item value.
 		 */
 		val: function() {
@@ -323,7 +371,8 @@
 
 		/**
 		 * Checks if at least one item is selected.
-		 *
+		 * @name jquery-consistent-listbox#hasSelected
+		 * @function
 		 * @returns {boolean} At least one item is selected.
 		 */
 		hasSelected: function() {
@@ -332,7 +381,8 @@
 
 		/**
 		 * Returns selected items values.
-		 *
+		 * @name jquery-consistent-listbox#vals
+		 * @function
 		 * @returns {array} Selected items values.
 		 */
 		vals: function() {
@@ -345,8 +395,9 @@
 
 		/**
 		 * Sorts items.
-		 * See also: {@link sortBy}.
-		 *
+		 * See also: {@link jquery-consistent-listbox#sortBy|sortBy()}.
+		 * @name jquery-consistent-listbox#sort
+		 * @function
 		 */
 		sort: function() {
 			this.sortBy(this.options.isSortByDataProp)
@@ -354,8 +405,9 @@
 
 		/**
 		 * Sorts items.
-		 * See also: {@link sort}.
-		 *
+		 * See also: {@link jquery-consistent-listbox#sort|sort()}.
+		 * @name jquery-consistent-listbox#sortBy
+		 * @function
 		 * @param {boolean} [is_sort_by_data_prop=null] - Determines whether sorting will be done by `sort_order` property of the related data. Default null, what does sort by item text mean. If true, then sort by `sort_order` property of the related data. If false, then sort by value.
 		 */
 		sortBy: function(is_sort_by_data_prop = null) {
@@ -387,8 +439,9 @@
 
 		/**
 		 * Returns `sort_order` property of the related data.
-		 * See also: {@link setSortOrder}.
-		 *
+		 * See also: {@link jquery-consistent-listbox#setSortOrder|setSortOrder()}.
+		 * @name jquery-consistent-listbox#getSortOrder
+		 * @function
 		 * @returns {number} `sort_order` property of the related data.
 		 */
 		getSortOrder: function() {
@@ -397,8 +450,9 @@
 
 		/**
 		 * Sets `sort_order` property of the related data.
-		 * See also: {@link getSortOrder}.
-		 *
+		 * See also: {@link jquery-consistent-listbox#getSortOrder|getSortOrder()}.
+		 * @name jquery-consistent-listbox#setSortOrder
+		 * @function
 		 * @param {number} sort_order - `sort_order` value.
 		 */
 		setSortOrder: function(sort_order) {
@@ -410,8 +464,9 @@
 
 		/**
 		 * Gets selected item text.
-		 * See also: {@link getItemText}, {@link setText}.
-		 *
+		 * See also: {@link jquery-consistent-listbox#getItemText|getItemText()}, {@link jquery-consistent-listbox#setText|setText()}.
+		 * @name jquery-consistent-listbox#getText
+		 * @function
 		 * @returns {string} Item text.
 		 */
 		getText: function() {
@@ -420,7 +475,9 @@
 
 		/**
 		 * Sets selected item text.
-		 * See also: {@link setItemText}, {@link getText}.
+		 * See also: {@link jquery-consistent-listbox#setItemText|setItemText()}, {@link jquery-consistent-listbox#getText|getText()}.
+		 * @name jquery-consistent-listbox#setText
+		 * @function
 		 * @param {string} text - New text for the selected item.
 		 */
 		setText: function(text) {
@@ -429,8 +486,9 @@
 
 		/**
 		 * Gets item text by value.
-		 * See also: {@link getText}, {@link setItemText}.
-		 *
+		 * See also: {@link jquery-consistent-listbox#getText|getText()}, {@link jquery-consistent-listbox#setItemText|setItemText()}.
+		 * @name jquery-consistent-listbox#getItemText
+		 * @function
 		 * @param {string} value - An item value.
 		 * @returns {string} Item text.
 		 */
@@ -440,8 +498,9 @@
 
 		/**
 		 * Sets item text by value.
-		 * See also: {@link setText}, {@link getItemText}.
-		 *
+		 * See also: {@link jquery-consistent-listbox#setText|setText()}, {@link jquery-consistent-listbox#getItemText|getItemText()}.
+		 * @name jquery-consistent-listbox#setItemText
+		 * @function
 		 * @param {string} value - An item value.
 		 * @param {string} text - New text for the item.
 		 */
@@ -451,6 +510,8 @@
 
 		/**
 		 * Gets assigned data.
+		 * @name jquery-consistent-listbox#getAllData
+		 * @function
 		 * @param {boolean=} [is_as_array=false] - Whether to return the result as an array (sorted as in the listbox control), otherwise return the object (when iterating over the properties of this object, the result will be sorted by value). Default false.
 		 * @param {boolean=} [is_return_text=false] - Update data object field with the item text. Default false.
 		 * @param {string=} [text_alias=""] - From which property of the data to take the value of the text. Default is empty string, which means take it from the `text` property of the data object.
@@ -485,7 +546,9 @@
 
 		/**
 		 * Gets selected item object.
-		 * See also: {@link items}.
+		 * See also: {@link jquery-consistent-listbox#items|items()}.
+		 * @name jquery-consistent-listbox#item
+		 * @function
 		 * @param {boolean=} [is_with_data=true] - Whether to return assigned data. Default true.
 		 * @returns {lb_item} Selected item object.
 		 */
@@ -495,7 +558,9 @@
 
 		/**
 		 * Gets list of selected items.
-		 * See also: {@link item}.
+		 * See also: {@link jquery-consistent-listbox#item|item()}.
+		 * @name jquery-consistent-listbox#items
+		 * @function
 		 * @param {boolean=} [is_with_data=true] - Whether to return assigned data. Default true.
 		 * @returns {array} List of items.
 		 */
@@ -510,6 +575,8 @@
 
 		/**
 		 * Checks if an element with the specified value exists.
+		 * @name jquery-consistent-listbox#hasItem
+		 * @function
 		 * @param {string} value - An item value.
 		 * @returns {boolean} Does the element exist.
 		 */
@@ -523,6 +590,8 @@
 
 		/**
 		 * Gets item object by an item value.
+		 * @name jquery-consistent-listbox#getItem
+		 * @function
 		 * @param {string} value - An item value.
 		 * @param {boolean=} [is_with_data=true] - Whether to return assigned data. Default true.
 		 * @returns {lb_item} Item object.
@@ -536,7 +605,9 @@
 
 		/**
 		 * Gets selected item assigned data.
-		 * See also: {@link getItemData}, {@link updateData}, {@link replaceData}.
+		 * See also: {@link jquery-consistent-listbox#getItemData|getItemData()}, {@link jquery-consistent-listbox#updateData|updateData()}, {@link jquery-consistent-listbox#replaceData|replaceData()}.
+		 * @name jquery-consistent-listbox#getData
+		 * @function
 		 * @returns {object} Related user-defined data.
 		 */
 		getData: function() {
@@ -545,7 +616,9 @@
 
 		/**
 		 * Updates related user-defined data. All unaffected properties remain unchanged.
-		 * See also: {@link updateItemData}, {@link getData}, {@link replaceData}.
+		 * See also: {@link jquery-consistent-listbox#updateItemData|updateItemData()}, {@link jquery-consistent-listbox#getData|getData()}, {@link jquery-consistent-listbox#replaceData|replaceData()}.
+		 * @name jquery-consistent-listbox#updateData
+		 * @function
 		 * @param {object} data - Data object.
 		 * @param {string=} [is_update_text=false] - Whether to update the item text. Default false.
 		 * @param {string=} [text_alias=""] - From which property of the data to take the value of the text. Default is empty string, which means take it from the `text` property of the data object.
@@ -556,7 +629,9 @@
 
 		/**
 		 * Replaces the user-defined data with a new object.
-		 * See also: {@link replaceItemData}, {@link getData}, {@link updateData}.
+		 * See also: {@link jquery-consistent-listbox#replaceItemData|replaceItemData()}, {@link jquery-consistent-listbox#getData|getData()}, {@link jquery-consistent-listbox#updateData|updateData()}.
+		 * @name jquery-consistent-listbox#replaceData
+		 * @function
 		 * @param {object} new_data - Data object.
 		 * @param {string=} [is_update_text=false] - Whether to update the item text. Default false.
 		 * @param {string=} [text_alias=""] - From which property of the data to take the value of the text. Default is empty string, which means take it from the `text` property of the data object.
@@ -567,7 +642,9 @@
 
 		/**
 		 * Gets item assigned data by an item value.
-		 * See also: {@link updateItemData}, {@link replaceItemData}, {@link getData}.
+		 * See also: {@link jquery-consistent-listbox#updateItemData|updateItemData()}, {@link jquery-consistent-listbox#replaceItemData|replaceItemData()}, {@link jquery-consistent-listbox#getData|getData()}.
+		 * @name jquery-consistent-listbox#getItemData
+		 * @function
 		 * @param {string} value - An item value.
 		 * @returns {object} Related user-defined data.
 		 */
@@ -581,7 +658,9 @@
 
 		/**
 		 * Updates related user-defined data by item value. All unaffected properties remain unchanged.
-		 * See also: {@link getItemData}, {@link replaceItemData}, {@link updateData}.
+		 * See also: {@link jquery-consistent-listbox#getItemData|getItemData()}, {@link jquery-consistent-listbox#replaceItemData|replaceItemData()}, {@link jquery-consistent-listbox#updateData|updateData()}.
+		 * @name jquery-consistent-listbox#updateItemData
+		 * @function
 		 * @param {string} value - An item value.
 		 * @param {object} data - Data object.
 		 * @param {string=} [is_update_text=false] - Whether to update the item text. Default false.
@@ -608,7 +687,9 @@
 
 		/**
 		 * Replaces the user-defined data with a new object by item value.
-		 * See also: {@link getItemData}, {@link updateItemData}, {@link replaceData}.
+		 * See also: {@link jquery-consistent-listbox#getItemData|getItemData()}, {@link jquery-consistent-listbox#updateItemData|updateItemData()}, {@link jquery-consistent-listbox#replaceData|replaceData()}.
+		 * @name jquery-consistent-listbox#replaceItemData
+		 * @function
 		 * @param {string} value - An item value.
 		 * @param {object} new_data - Data object.
 		 * @param {string=} [is_update_text=false] - Whether to update the item text. Default false.
@@ -632,6 +713,8 @@
 
 		/**
 		 * Selects the specified item or multiple specified items for multiselect.
+		 * @name jquery-consistent-listbox#select
+		 * @function
 		 * @param {(string|string[])} value - An item value, or an array of item values. If the value is null or undefined, the selection is removed. For singleselect selects the last item in the array.
 		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
 		 * @param {object=} [e=null] - jQuery event or another data which will be transferred to `onChange`. Default null.
@@ -656,7 +739,9 @@
 
 		/**
 		 * Replaces selected item value.
-		 * See also: {@link setItemVal}.
+		 * See also: {@link jquery-consistent-listbox#setItemVal|setItemVal()}.
+		 * @name jquery-consistent-listbox#setVal
+		 * @function
 		 * @param {string} new_value - New item value.
 		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
 		 * @param {object=} [e=null] - jQuery event or another data which will be transferred to `onChange`. Default null.
@@ -667,7 +752,9 @@
 
 		/**
 		 * Replaces item value by item value.
-		 * See also: {@link setVal}.
+		 * See also: {@link jquery-consistent-listbox#setVal|setVal()}.
+		 * @name jquery-consistent-listbox#setItemVal
+		 * @function
 		 * @param {string} value - An item value.
 		 * @param {string} new_value - New item value.
 		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
@@ -687,7 +774,9 @@
 
 		/**
 		 * Gets a user-defined data property by key.
-		 * See also: {@link getItemDataVar}, {@link unsetDataVar}, {@link setDataVar}.
+		 * See also: {@link jquery-consistent-listbox#getItemDataVar|getItemDataVar()}, {@link jquery-consistent-listbox#unsetDataVar|unsetDataVar()}, {@link jquery-consistent-listbox#setDataVar|setDataVar()}.
+		 * @name jquery-consistent-listbox#getDataVar
+		 * @function
 		 * @param {string} key - Property key.
 		 * @returns Property value.
 		 */
@@ -697,7 +786,9 @@
 
 		/**
 		 * Sets a user-defined data property by key.
-		 * See also: {@link setItemDataVar}, {@link unsetDataVar}, {@link getDataVar}.
+		 * See also: {@link jquery-consistent-listbox#setItemDataVar|setItemDataVar()}, {@link jquery-consistent-listbox#unsetDataVar|unsetDataVar()}, {@link jquery-consistent-listbox#getDataVar|getDataVar()}.
+		 * @name jquery-consistent-listbox#setDataVar
+		 * @function
 		 * @param {string} key - Property key.
 		 * @param {string} prop - Property value.
 		 */
@@ -707,7 +798,9 @@
 
 		/**
 		 * Unsets a user-defined data property property by key.
-		 * See also: {@link getItemDataVar}, {@link setDataVar}, {@link setDataVar}.
+		 * See also: {@link jquery-consistent-listbox#getItemDataVar|getItemDataVar()}, {@link jquery-consistent-listbox#setDataVar|setDataVar()}, {@link jquery-consistent-listbox#setDataVar|setDataVar()}.
+		 * @name jquery-consistent-listbox#unsetDataVar
+		 * @function
 		 * @param {string} key - Property key.
 		 */
 		unsetDataVar: function(key) {
@@ -716,7 +809,9 @@
 
 		/**
 		 * Gets user-defined data property by item value and property key.
-		 * See also: {@link getDataVar}, {@link setItemDataVar}, {@link setItemDataVar}.
+		 * See also: {@link jquery-consistent-listbox#getDataVar|getDataVar()}, {@link jquery-consistent-listbox#setItemDataVar|setItemDataVar()}, {@link jquery-consistent-listbox#setItemDataVar|setItemDataVar()}.
+		 * @name jquery-consistent-listbox#getItemDataVar
+		 * @function
 		 * @param {string} value - An item value.
 		 * @param {string} key - Property key.
 		 * @returns Property value.
@@ -738,7 +833,9 @@
 
 		/**
 		 * Sets user-defined data property by item value and property key.
-		 * See also: {@link setDataVar}, {@link unsetItemDataVar}, {@link getItemDataVar}.
+		 * See also: {@link jquery-consistent-listbox#setDataVar|setDataVar()}, {@link jquery-consistent-listbox#unsetItemDataVar|unsetItemDataVar()}, {@link jquery-consistent-listbox#getItemDataVar|getItemDataVar()}.
+		 * @name jquery-consistent-listbox#setItemDataVar
+		 * @function
 		 * @param {string} value - An item value.
 		 * @param {string} key - Property key.
 		 * @param {string} prop - Property value.
@@ -755,7 +852,9 @@
 
 		/**
 		 * Unsets a user-defined data property property by item value and property key.
-		 * See also: {@link getDataVar}, {@link setItemDataVar}, {@link setItemDataVar}.
+		 * See also: {@link jquery-consistent-listbox#getDataVar|getDataVar()}, {@link jquery-consistent-listbox#setItemDataVar|setItemDataVar()}, {@link jquery-consistent-listbox#setItemDataVar|setItemDataVar()}.
+		 * @name jquery-consistent-listbox#unsetItemDataVar
+		 * @function
 		 * @param {string} value - An item value.
 		 * @param {string} key - Property key.
 		 */

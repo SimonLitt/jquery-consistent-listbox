@@ -6,7 +6,7 @@ die () {
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 echo "Generation of documentation..."
-jsdoc "${SCRIPT_DIR}/listbox.js" -d "${SCRIPT_DIR}/docs/" || die
+jsdoc "${SCRIPT_DIR}/listbox.js" "${SCRIPT_DIR}/README.md" -d "${SCRIPT_DIR}/docs/" || die
 
 echo "Minimization..."
 uglifyjs "${SCRIPT_DIR}/listbox.js" -o "${SCRIPT_DIR}/upload/listbox.min.js" --compress --mangle --comments || die
