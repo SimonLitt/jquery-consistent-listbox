@@ -52,7 +52,7 @@ For the multiselect listbox, you need to specify the `multiSelect` option. If th
 	$( function() {
 		$('#user_multilistbox').listbox({
 			multiSelect: true,
-			name: 'selected_name', // The HTML `name` attribute identifier. Mandatory when there is more than one listbox on one page.
+			name: 'selected_name', // The HTML `name` attribute identifier. Mandatory different names when there is more than one listbox on one page.
 			items: [
 				{val: '1', text: 'Item 1', checked: true},
 				{val: '2', text: 'Item 2', checked: true},
@@ -72,7 +72,7 @@ For the multiselect listbox, you need to specify the `multiSelect` option. If th
 
 `multiSelect`	Type:boolean	This is a multiselect listbox, otherwise it is a singleselect listbox. Default false.
 
-`name`	_Type:sting_	The HTML `name` attribute identifier. Mandatory when there is more than one listbox on one page. Default `lb_name`.
+`name`	_Type:sting_	The HTML `name` attribute identifier. Mandatory when there is more than one listbox on one page. Default is empty string, which means use `lb_name<uuid>` string.
 
 `quiet`	_Type:boolean_	Disable call `onChange`. Default false.
 
