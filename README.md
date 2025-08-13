@@ -82,7 +82,7 @@ For the multiselect listbox, you need to specify the `multiSelect` option. If th
 
 `isSortByDataProp` 	_Type:boolean_ 	Determines whether sorting will be done by `sort_order` property of the related data. Default null, what does sort by item text mean. If true, then sort by `sort_order` property of the related data. If false, then sort by value.
 
-`sortable`	_Type:boolean_	Allowed to sort manually by dragging items. Default false. Warning: The jQuery UI library does not support the use of touch events in its widgets and interactions. To achieve correct operation, connect jQuery UI Touch Punch. [Original repo (old)](https://github.com/furf/jquery-ui-touch-punch), [RWAP Version](https://github.com/RWAP/jquery-ui-touch-punch).
+`sortable`	_Type:boolean_	Allowed to sort manually by dragging items. Default false. Warning: The jQuery UI library does not support the use of touch events in its widgets and interactions. To achieve correct operation, connect jQuery UI Touch Punch: [RWAP Version](https://github.com/RWAP/jquery-ui-touch-punch), [Original repo (old)](https://github.com/furf/jquery-ui-touch-punch).
 
 `sortOrderStep`	_Type:number_	`sort_order` data key increment step for auto sorting. Default 10.
 
