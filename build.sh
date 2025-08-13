@@ -37,7 +37,7 @@ if [ $(git tag -l "$version") ]; then
     build_files="$TMP_DIR/${namespace_var}/jquery-consistent-listbox/"
     mkdir -p ${build_files} || die
 
-    zip_file_name="${ver_path}jquery-consistent-listbox-$version.zip"
+    zip_file_name="${ver_path}jquery-consistent-listbox-$version-min.zip"
     rm -f "${zip_file_name}"
     zip_file_name_docs="${ver_path}jquery-consistent-listbox-$version-docs.zip"
     rm -f "${zip_file_name_docs}"
