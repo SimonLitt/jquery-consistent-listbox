@@ -19,7 +19,7 @@
 		* @typedef lb_options
 		* @type {Object}
 		* @property {boolean} multiSelect - This is a multiselect listbox, otherwise it is a singleselect listbox. Default false.
-		* @property {sting} name - The HTML `name` attribute identifier. Mandatory when there is more than one listbox on one page. Default `lb_name`.
+		* @property {sting} name - The HTML `name` attribute identifier. Default `lb_name&lt;uuid>`. Note: When there is more than one listbox with the same name on one page, there will be display and functionality issues!
 		* @property {boolean} quiet - Disable call `onChange`. Default false.
 		* @property {boolean} autoSort - Enable auto sorting. Default false.
 		* @property {string} sortOrder - Sort data key. Default null.
@@ -29,7 +29,7 @@
 		*/
 		options: {
 			multiSelect: false,
-			name: 'lb_name',
+			name: '',
 			quiet: false,
 			autoSort: false,
 			sortOrder: null,
@@ -101,7 +101,6 @@
 			this.element.sortable('destroy');
 			this.element.find('label.ui-menu-item > i.drag-icon').remove();
 			this.element.removeClass('lb-sortable');
-
 		},
 
 		_switch_to_sortable: function() {
@@ -109,12 +108,17 @@
 			this._set_sortable();
 		},
 
+		_get_html_name: function() {
+			return this.options.name ? this.options.name : ('lb_name' + this.uuid);
+		},
+
 		_item_html:  function(text, value, html_class, is_checked) {
-			return '<label class="ui-menu-item ui-menu-item-wrapper ui-corner-all' + (is_checked ? ' ui-state-active' : '') + (html_class ? (' ' + html_class) : '') + '" title="' + text + '"><input type="' + (this.options.multiSelect ? 'checkbox' : 'radio') + '"' + (this.options.name ? (' name="' + this.options.name + '"') : 'lb_name')+ ' class="form-check-input" value="' + value + '"' + (is_checked ? ' checked="checked"' : '') + '/><span class="item-text">' + text + '</span>' + ((this.options.sortable && !this.options.autoSort) ? this._sortable_html() : '') + '</label>';
+			return '<label class="ui-menu-item ui-menu-item-wrapper ui-corner-all' + (is_checked ? ' ui-state-active' : '') + (html_class ? (' ' + html_class) : '') + '" title="' + text + '"><input type="' + (this.options.multiSelect ? 'checkbox' : 'radio') + '" name="' + this._get_html_name(this.options.name) + '" class="form-check-input" value="' + value + '"' + (is_checked ? ' checked="checked"' : '') + '/><span class="item-text">' + text + '</span>' + ((this.options.sortable && !this.options.autoSort) ? this._sortable_html() : '') + '</label>';
 		},
 
 		/**
 		 * Gets the specified item index.
+		 * See also: {@link getItemIndex}.
 		 *
 		 * @returns {boolean} The item index.
 		 */
@@ -124,6 +128,7 @@
 
 		/**
 		 * Gets an item index by value.
+		 * See also: {@link index}.
 		 *
 		 * @param {string} value - Item value.
 		 * @returns {number} The item index.
@@ -212,6 +217,7 @@
 
 		/**
 		 * Removes the selected items.
+		 * See also: {@link delete}.
 		 *
 		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
 		 * @param {object=} [e=null] - jQuery event or another data which will be transferred to `onChange`. Default null.
@@ -233,6 +239,7 @@
 
 		/**
 		 * Deletes the specified item.
+		 * See also: {@link remove}.
 		 *
 		 * @param {string} value - Item value.
 		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
@@ -338,6 +345,7 @@
 
 		/**
 		 * Sorts items.
+		 * See also: {@link sortBy}.
 		 *
 		 */
 		sort: function() {
@@ -346,6 +354,7 @@
 
 		/**
 		 * Sorts items.
+		 * See also: {@link sort}.
 		 *
 		 * @param {boolean} [is_sort_by_data_prop=null] - Determines whether sorting will be done by `sort_order` property of the related data. Default null, what does sort by item text mean. If true, then sort by `sort_order` property of the related data. If false, then sort by value.
 		 */
@@ -378,6 +387,7 @@
 
 		/**
 		 * Returns `sort_order` property of the related data.
+		 * See also: {@link setSortOrder}.
 		 *
 		 * @returns {number} `sort_order` property of the related data.
 		 */
@@ -387,6 +397,7 @@
 
 		/**
 		 * Sets `sort_order` property of the related data.
+		 * See also: {@link getSortOrder}.
 		 *
 		 * @param {number} sort_order - `sort_order` value.
 		 */
@@ -399,6 +410,7 @@
 
 		/**
 		 * Gets selected item text.
+		 * See also: {@link getItemText}, {@link setText}.
 		 *
 		 * @returns {string} Item text.
 		 */
@@ -408,6 +420,7 @@
 
 		/**
 		 * Sets selected item text.
+		 * See also: {@link setItemText}, {@link getText}.
 		 * @param {string} text - New text for the selected item.
 		 */
 		setText: function(text) {
@@ -416,6 +429,7 @@
 
 		/**
 		 * Gets item text by value.
+		 * See also: {@link getText}, {@link setItemText}.
 		 *
 		 * @param {string} value - An item value.
 		 * @returns {string} Item text.
@@ -426,6 +440,7 @@
 
 		/**
 		 * Sets item text by value.
+		 * See also: {@link setText}, {@link getItemText}.
 		 *
 		 * @param {string} value - An item value.
 		 * @param {string} text - New text for the item.
@@ -470,6 +485,7 @@
 
 		/**
 		 * Gets selected item object.
+		 * See also: {@link items}.
 		 * @param {boolean=} [is_with_data=true] - Whether to return assigned data. Default true.
 		 * @returns {lb_item} Selected item object.
 		 */
@@ -479,6 +495,7 @@
 
 		/**
 		 * Gets list of selected items.
+		 * See also: {@link item}.
 		 * @param {boolean=} [is_with_data=true] - Whether to return assigned data. Default true.
 		 * @returns {array} List of items.
 		 */
@@ -519,6 +536,7 @@
 
 		/**
 		 * Gets selected item assigned data.
+		 * See also: {@link getItemData}, {@link updateData}, {@link replaceData}.
 		 * @returns {object} Related user-defined data.
 		 */
 		getData: function() {
@@ -527,6 +545,7 @@
 
 		/**
 		 * Updates related user-defined data. All unaffected properties remain unchanged.
+		 * See also: {@link updateItemData}, {@link getData}, {@link replaceData}.
 		 * @param {object} data - Data object.
 		 * @param {string=} [is_update_text=false] - Whether to update the item text. Default false.
 		 * @param {string=} [text_alias=""] - From which property of the data to take the value of the text. Default is empty string, which means take it from the `text` property of the data object.
@@ -537,6 +556,7 @@
 
 		/**
 		 * Replaces the user-defined data with a new object.
+		 * See also: {@link replaceItemData}, {@link getData}, {@link updateData}.
 		 * @param {object} new_data - Data object.
 		 * @param {string=} [is_update_text=false] - Whether to update the item text. Default false.
 		 * @param {string=} [text_alias=""] - From which property of the data to take the value of the text. Default is empty string, which means take it from the `text` property of the data object.
@@ -547,6 +567,7 @@
 
 		/**
 		 * Gets item assigned data by an item value.
+		 * See also: {@link updateItemData}, {@link replaceItemData}, {@link getData}.
 		 * @param {string} value - An item value.
 		 * @returns {object} Related user-defined data.
 		 */
@@ -560,6 +581,7 @@
 
 		/**
 		 * Updates related user-defined data by item value. All unaffected properties remain unchanged.
+		 * See also: {@link getItemData}, {@link replaceItemData}, {@link updateData}.
 		 * @param {string} value - An item value.
 		 * @param {object} data - Data object.
 		 * @param {string=} [is_update_text=false] - Whether to update the item text. Default false.
@@ -586,6 +608,7 @@
 
 		/**
 		 * Replaces the user-defined data with a new object by item value.
+		 * See also: {@link getItemData}, {@link updateItemData}, {@link replaceData}.
 		 * @param {string} value - An item value.
 		 * @param {object} new_data - Data object.
 		 * @param {string=} [is_update_text=false] - Whether to update the item text. Default false.
@@ -633,6 +656,7 @@
 
 		/**
 		 * Replaces selected item value.
+		 * See also: {@link setItemVal}.
 		 * @param {string} new_value - New item value.
 		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
 		 * @param {object=} [e=null] - jQuery event or another data which will be transferred to `onChange`. Default null.
@@ -643,6 +667,7 @@
 
 		/**
 		 * Replaces item value by item value.
+		 * See also: {@link setVal}.
 		 * @param {string} value - An item value.
 		 * @param {string} new_value - New item value.
 		 * @param {boolean=} [is_quiet=false] - Disable or enable call `onChange`. Default false.
@@ -662,6 +687,7 @@
 
 		/**
 		 * Gets a user-defined data property by key.
+		 * See also: {@link getItemDataVar}, {@link unsetDataVar}, {@link setDataVar}.
 		 * @param {string} key - Property key.
 		 * @returns Property value.
 		 */
@@ -671,6 +697,7 @@
 
 		/**
 		 * Sets a user-defined data property by key.
+		 * See also: {@link setItemDataVar}, {@link unsetDataVar}, {@link getDataVar}.
 		 * @param {string} key - Property key.
 		 * @param {string} prop - Property value.
 		 */
@@ -680,6 +707,7 @@
 
 		/**
 		 * Unsets a user-defined data property property by key.
+		 * See also: {@link getItemDataVar}, {@link setDataVar}, {@link setDataVar}.
 		 * @param {string} key - Property key.
 		 */
 		unsetDataVar: function(key) {
@@ -688,6 +716,7 @@
 
 		/**
 		 * Gets user-defined data property by item value and property key.
+		 * See also: {@link getDataVar}, {@link setItemDataVar}, {@link setItemDataVar}.
 		 * @param {string} value - An item value.
 		 * @param {string} key - Property key.
 		 * @returns Property value.
@@ -709,6 +738,7 @@
 
 		/**
 		 * Sets user-defined data property by item value and property key.
+		 * See also: {@link setDataVar}, {@link unsetItemDataVar}, {@link getItemDataVar}.
 		 * @param {string} value - An item value.
 		 * @param {string} key - Property key.
 		 * @param {string} prop - Property value.
@@ -725,6 +755,7 @@
 
 		/**
 		 * Unsets a user-defined data property property by item value and property key.
+		 * See also: {@link getDataVar}, {@link setItemDataVar}, {@link setItemDataVar}.
 		 * @param {string} value - An item value.
 		 * @param {string} key - Property key.
 		 */
@@ -753,11 +784,7 @@
 					this._last_val = value ? this._sorted_vals() : this.val();
 					break;
 				case 'name':
-					if (value) {
-						this.element.find('input').attr('name', value);
-					} else {
-						this.element.find('input').removeAttr('name');
-					}
+					this.element.find('input.form-check-input').attr('name', this._get_html_name(value));
 					break;
 				case 'sortable':
 					if (value) {
