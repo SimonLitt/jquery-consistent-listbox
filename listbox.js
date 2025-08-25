@@ -19,7 +19,7 @@
 	 * @property {object} data - Optional. Related user-defined data. Automatic or manual sorting changes or creates the `sort_order` property.
 	 */
 
-	$.widget( "simonlitt.jquery-consistent-listbox", {
+	$.widget( "simonlitt.listbox", {
 		options: {
 			/**
 			 * @name jquery-consistent-listbox#items
@@ -176,6 +176,30 @@
 		getItemIndex:  function(value) {
 			let selected_input = this.element.find('input[value=\'' + value + '\']');
 			return selected_input.closest('.ui-menu-item').index();
+		},
+
+		/**
+		 * Gets the first item value.
+		 * See also: {@link jquery-consistent-listbox#last|last()}.
+		 * @name jquery-consistent-listbox#first
+		 * @function
+		 * @returns {string} The first item value.
+		 */
+		first:  function() {
+			let indexed_ctrl = this.element.find('label.ui-menu-item').first();
+			return indexed_ctrl.length ? (indexed_ctrl.find('input.form-check-input').val()) : null;
+		},
+
+		/**
+		 * Gets the last item value.
+		 * See also: {@link jquery-consistent-listbox#first|first()}.
+		 * @name jquery-consistent-listbox#last
+		 * @function
+		 * @returns {string} The last item value.
+		 */
+		last:  function() {
+			let indexed_ctrl = this.element.find('label.ui-menu-item').last();
+			return indexed_ctrl.length ? (indexed_ctrl.find('input.form-check-input').val()) : null;
 		},
 
 		_insert: function(index, item) {

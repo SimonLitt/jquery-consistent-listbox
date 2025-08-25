@@ -10,7 +10,7 @@
 		<link href="https://code.jquery.com/ui/1.14.1/themes/cupertino/jquery-ui.css" type="text/css" rel="stylesheet" media="screen"  integrity="sha256-1Lhp59o6Lo17agNDv7pxRJSu6j1iExUKwHp/P2I19hQ=" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
 		<!-- include the plugin and default stylesheet -->
-		<script src="../upload/listbox.min.js" type="text/javascript"></script>
+		<script src="../listbox.js" type="text/javascript"></script>
 		<link href="../upload/listbox.min.css" type="text/css" rel="stylesheet"/>
 
 		<link href="example.css" type="text/css" rel="stylesheet"/>
@@ -42,6 +42,8 @@
 
 	<button id="btn-length" type="button">Length</button>&nbsp;
 	<button id="btn-has-item" type="button">Is there an item  `5`</button>&nbsp;
+	<button id="btn-first" type="button">First</button>
+	<button id="btn-last" type="button">Last</button>
 	<button id="btn-add" type="button">Add</button>&nbsp;
 	<button id="btn-insert" type="button">Insert</button>&nbsp;
 	<button id="btn-clear" type="button">Clear</button>&nbsp;
@@ -63,6 +65,18 @@
 		$('#btn-has-item').on("click", function(e) {
 			e.preventDefault();
 			$('#output').append('<p>' + ($('#user_listbox').listbox('hasItem', 5) ? 'There is the `5` item' : 'There is no `5` item!') + '`.</p>');
+		});
+
+		$('#btn-first').on("click", function(e) {
+			e.preventDefault();
+			let f_val = $('#user_listbox').listbox('first');
+			$('#output').append('<p>' + (f_val ? ('The first item value is `' + f_val + '`.') : 'There is no any item!') + '</p>');
+		});
+
+		$('#btn-last').on("click", function(e) {
+			e.preventDefault();
+			let l_val = $('#user_listbox').listbox('last');
+			$('#output').append('<p>' + (l_val ? ('The last item value is `' + l_val + '`.') : 'There is no any item!') + '</p>');
 		});
 
 		$('#user_listbox').listbox({
